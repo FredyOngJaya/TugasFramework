@@ -67,9 +67,15 @@ namespace TugasFramework.Library
         /// <param name="connection"></param>
         public static void OpenConnection(this SqlConnection connection)
         {
-            if (connection.State != System.Data.ConnectionState.Open)
+            try
             {
-                connection.Open();
+                if (connection.State != System.Data.ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 
