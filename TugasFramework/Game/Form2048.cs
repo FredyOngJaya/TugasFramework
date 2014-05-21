@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace TugasFramework.Game
 {
+    /// <summary>
+    /// 2048 using code from https://github.com/gabrielecirulli/2048
+    /// </summary>
     public partial class Form2048 : Form
     {
         private int size;
