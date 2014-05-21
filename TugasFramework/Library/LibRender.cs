@@ -7,6 +7,9 @@ using System.Drawing;
 
 namespace TugasFramework.Library
 {
+    /// <summary>
+    /// Original by : Ade Maulana (091112719)
+    /// </summary>
     class LibRender : ToolStripProfessionalRenderer
     {
         protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
