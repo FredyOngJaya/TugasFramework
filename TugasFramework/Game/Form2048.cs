@@ -381,10 +381,10 @@ namespace TugasFramework.Game
         private Coordinat getVector(int direction)
         {
             Coordinat[] map = new Coordinat[4];
-            map[0] = new Coordinat(0, -1); // Up
-            map[1] = new Coordinat(1, 0); // Right
-            map[2] = new Coordinat(0, 1); // Down
-            map[3] = new Coordinat(-1, 0); // Left
+            map[(int)Direct.Up] = new Coordinat(0, -1); // Up
+            map[(int)Direct.Right] = new Coordinat(1, 0); // Right
+            map[(int)Direct.Down] = new Coordinat(0, 1); // Down
+            map[(int)Direct.Left] = new Coordinat(-1, 0); // Left
             return map[direction];
         }
 
