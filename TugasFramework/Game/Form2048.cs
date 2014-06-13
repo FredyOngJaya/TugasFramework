@@ -248,6 +248,7 @@ namespace TugasFramework.Game
             tileBackgroundColor[1 << 16] = Color.FromArgb(0x3c, 0x3a, 0x32);
 
             this.setup();
+            this.label1.Focus();
         }
 
         private void Form2048_KeyDown(object sender, KeyEventArgs e)

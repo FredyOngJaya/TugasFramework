@@ -314,7 +314,7 @@
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button00);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form2048";
             this.ShowIcon = false;
             this.Text = "Form2048";

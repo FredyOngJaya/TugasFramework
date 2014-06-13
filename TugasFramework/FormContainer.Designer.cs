@@ -29,15 +29,68 @@
         private void InitializeComponent()
         {
             this.menuStripLibrary = new System.Windows.Forms.MenuStrip();
+            this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.game2048ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripLibrary.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripLibrary
             // 
+            this.menuStripLibrary.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.masterToolStripMenuItem,
+            this.transaksiToolStripMenuItem,
+            this.laporanToolStripMenuItem,
+            this.gameToolStripMenuItem,
+            this.testingToolStripMenuItem});
             this.menuStripLibrary.Location = new System.Drawing.Point(0, 0);
             this.menuStripLibrary.Name = "menuStripLibrary";
             this.menuStripLibrary.Size = new System.Drawing.Size(630, 24);
             this.menuStripLibrary.TabIndex = 0;
             this.menuStripLibrary.Text = "menuStrip1";
+            // 
+            // masterToolStripMenuItem
+            // 
+            this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
+            this.masterToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.masterToolStripMenuItem.Text = "Master";
+            // 
+            // transaksiToolStripMenuItem
+            // 
+            this.transaksiToolStripMenuItem.Name = "transaksiToolStripMenuItem";
+            this.transaksiToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.transaksiToolStripMenuItem.Text = "Transaksi";
+            // 
+            // laporanToolStripMenuItem
+            // 
+            this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
+            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.laporanToolStripMenuItem.Text = "Laporan";
+            // 
+            // gameToolStripMenuItem
+            // 
+            this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.game2048ToolStripMenuItem});
+            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.gameToolStripMenuItem.Text = "Game";
+            // 
+            // game2048ToolStripMenuItem
+            // 
+            this.game2048ToolStripMenuItem.Name = "game2048ToolStripMenuItem";
+            this.game2048ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.game2048ToolStripMenuItem.Text = "Game 2048";
+            this.game2048ToolStripMenuItem.Click += new System.EventHandler(this.game2048ToolStripMenuItem_Click);
+            // 
+            // testingToolStripMenuItem
+            // 
+            this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
+            this.testingToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.testingToolStripMenuItem.Text = "testing";
+            this.testingToolStripMenuItem.Click += new System.EventHandler(this.testingToolStripMenuItem_Click);
             // 
             // FormContainer
             // 
@@ -53,7 +106,9 @@
             this.Name = "FormContainer";
             this.ShowIcon = false;
             this.Text = "Framework";
-            this.Load += new System.EventHandler(this.FormContainer_Load);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.menuStripLibrary.ResumeLayout(false);
+            this.menuStripLibrary.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -62,5 +117,11 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStripLibrary;
+        private System.Windows.Forms.ToolStripMenuItem masterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transaksiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem laporanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem game2048ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testingToolStripMenuItem;
     }
 }

@@ -17,10 +17,10 @@ namespace TugasFramework
         public Form1()
         {
             InitializeComponent();
-            lib._SqlConnection.OpenConnection();
+            lib._SqlConnection.BukaKoneksi();
             lib.PesanError("ERROR");
             lib.PesanInformasi("INFO");
-            lib.PesanWarning("WARNING");
+            lib.PesanPeringatan("WARNING");
             lib.Pertanyaan("ARE U SURE");
         }
     }

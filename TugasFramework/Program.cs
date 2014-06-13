@@ -15,8 +15,8 @@ namespace TugasFramework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormContainer());
-            Application.Run(new Game.Form2048());
+            Application.Run(new FormContainer());
+            //Application.Run(new Game.Form2048());
         }
     }
 }
