@@ -67,11 +67,23 @@
     <Compile Include="FormContainer.Designer.cs">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Game\Form2048.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Game\Form2048.Designer.cs">
       <DependentUpon>Form2048.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Library\FormBrowse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\FormBrowse.Designer.cs">
+      <DependentUpon>FormBrowse.cs</DependentUpon>
     </Compile>
     <Compile Include="Library\LibGlobal.cs" />
     <Compile Include="Library\LibRender.cs" />
@@ -83,8 +95,14 @@
     <EmbeddedResource Include="FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Game\Form2048.resx">
       <DependentUpon>Form2048.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\FormBrowse.resx">
+      <DependentUpon>FormBrowse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

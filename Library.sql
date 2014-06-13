@@ -1,7 +1,25 @@
+use master
+go
+
+if exists(select name from sys.databases where name=N'library')
+begin
+	alter database library set single_user with rollback immediate;
+	drop database Library;
+end
+go
+
 create database Library
 go
 
 use Library
+go
+
+create table Pengguna
+(
+	username varchar(64) not null,
+	fingerprint varchar(50) not null,
+	constraint PK_Pengguna primary key (username)
+)
 go
 
 create table Buku
@@ -10,6 +28,7 @@ create table Buku
 	nama varchar(255) not null,
 	constraint PK_Buku primary key (id)
 )
+go
 
 create table Pengarang
 (
@@ -17,6 +36,7 @@ create table Pengarang
 	nama varchar(255) not null,
 	constraint PK_Pengarang primary key (id)
 )
+go
 
 create table Pengarang_Buku
 (
@@ -27,6 +47,7 @@ create table Pengarang_Buku
 	constraint PK_Pengarang_Buku_ref_Pengarang foreign key (id_pengarang)
 		references Pengarang (id)
 )
+go
 
 create table Anggota
 (
@@ -34,6 +55,7 @@ create table Anggota
 	nama varchar(255) not null,
 	constraint PK_Anggota primary key (id)
 )
+go
 
 create table Peminjaman_Buku
 (
@@ -49,3 +71,8 @@ create table Peminjaman_Buku
 	constraint FK_Peminjaman_Buku_Detail_ref_Buku foreign key (id_buku)
 		references Buku (id)
 )
+go
+
+insert into Pengguna
+select 'ADMIN', CONVERT(varchar(50), HASHBYTES('SHA1', 'spasi'), 2)
+go

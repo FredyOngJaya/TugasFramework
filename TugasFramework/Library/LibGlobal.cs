@@ -19,6 +19,10 @@ namespace TugasFramework.Library
         /// Koneksi SQL ke database
         /// </summary>
         public static SqlConnection _SqlConnection = new SqlConnection(_SqlConnectionString);
+        public static KeyEventHandler enterAsTab = (s, e) =>
+        {
+            if (e.KeyCode == Keys.Enter) SendKeys.Send("{TAB}");
+        };
 
         #region MessageBox
 
@@ -64,6 +68,10 @@ namespace TugasFramework.Library
 
         #endregion
 
+
+        /// <summary>
+        /// Original by : Yudi Umar (091111748), edited
+        /// </summary>
         #region SQL
 
         /// <summary>

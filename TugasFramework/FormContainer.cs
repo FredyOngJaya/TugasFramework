@@ -8,25 +8,42 @@ using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
 
+using TugasFramework.Library;
+using lib = TugasFramework.Library.LibGlobal;
+
 namespace TugasFramework
 {
     public partial class FormContainer : Form
     {
+        private Game.Form2048 Game2048;
+        private Form1 formTest;
+
         public FormContainer()
         {
             InitializeComponent();
             this.menuStripLibrary.Renderer = new Library.LibRender();
-            this.KeyDown += (s, e) => { if (this.ActiveMdiChild != null) return; };
-            this.KeyDown += new KeyEventHandler(FormContainer_KeyDown);
         }
 
-        void FormContainer_KeyDown(object sender, KeyEventArgs e)
+        private void FormContainer_Load(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            lib._SqlConnection.BukaKoneksi();
+            FormLogin loginFirst = new FormLogin();
+            this.Hide();
+            loginFirst.ShowDialog();
+            if (!loginFirst.loginSukses)
+            {
+                this.Close();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
-        private Game.Form2048 Game2048;
-        private Form1 formTest;
+        private void FormContainer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            lib._SqlConnection.TutupKoneksi();
+        }
 
         private void ShowForm<T>(ref T newForm, bool showDialogMode)
         {

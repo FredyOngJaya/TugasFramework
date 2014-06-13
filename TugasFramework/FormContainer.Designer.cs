@@ -107,6 +107,8 @@
             this.ShowIcon = false;
             this.Text = "Framework";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormContainer_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormContainer_FormClosing);
             this.menuStripLibrary.ResumeLayout(false);
             this.menuStripLibrary.PerformLayout();
             this.ResumeLayout(false);
