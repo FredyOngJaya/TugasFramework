@@ -17,27 +17,21 @@ namespace TugasFramework
     {
         private Game.Form2048 Game2048;
         private Form1 formTest;
+        public bool isTerminated { get; private set; }
 
         public FormContainer()
         {
             InitializeComponent();
-            this.menuStripLibrary.Renderer = new Library.LibRender();
-        }
-
-        private void FormContainer_Load(object sender, EventArgs e)
-        {
             lib._SqlConnection.BukaKoneksi();
+            isTerminated = false;
             FormLogin loginFirst = new FormLogin();
             this.Hide();
             loginFirst.ShowDialog();
             if (!loginFirst.loginSukses)
             {
-                this.Close();
+                isTerminated = true;
             }
-            else
-            {
-                this.Show();
-            }
+            this.menuStripLibrary.Renderer = new Library.LibRender();
         }
 
         private void FormContainer_FormClosing(object sender, FormClosingEventArgs e)

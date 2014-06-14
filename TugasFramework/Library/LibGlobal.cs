@@ -19,6 +19,9 @@ namespace TugasFramework.Library
         /// Koneksi SQL ke database
         /// </summary>
         public static SqlConnection _SqlConnection = new SqlConnection(_SqlConnectionString);
+        /// <summary>
+        /// KeyEventHandler enter jadi tab
+        /// </summary>
         public static KeyEventHandler enterAsTab = (s, e) =>
         {
             if (e.KeyCode == Keys.Enter) SendKeys.Send("{TAB}");
@@ -172,6 +175,11 @@ namespace TugasFramework.Library
 
         #region Kriptografi
 
+        /// <summary>
+        /// SHA-1 dari string
+        /// </summary>
+        /// <param name="_string"></param>
+        /// <returns></returns>
         public static string GetSHA1(string _string)
         {
             SHA1 _sha1 = SHA1.Create();

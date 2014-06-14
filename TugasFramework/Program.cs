@@ -15,7 +15,9 @@ namespace TugasFramework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormContainer());
+            FormContainer container = new FormContainer();
+            if (!container.isTerminated)
+                Application.Run(container);
         }
     }
 }

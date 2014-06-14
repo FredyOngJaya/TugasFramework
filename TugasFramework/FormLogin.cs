@@ -22,6 +22,7 @@ namespace TugasFramework
 
             loginSukses = false;
             textBoxUsername.KeyDown += lib.enterAsTab;
+            textBoxPassword.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) buttonMasuk.PerformClick(); };
         }
 
         private void buttonMasuk_Click(object sender, EventArgs e)

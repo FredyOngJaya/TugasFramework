@@ -81,7 +81,7 @@
             // game2048ToolStripMenuItem
             // 
             this.game2048ToolStripMenuItem.Name = "game2048ToolStripMenuItem";
-            this.game2048ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.game2048ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.game2048ToolStripMenuItem.Text = "Game 2048";
             this.game2048ToolStripMenuItem.Click += new System.EventHandler(this.game2048ToolStripMenuItem_Click);
             // 
@@ -107,7 +107,6 @@
             this.ShowIcon = false;
             this.Text = "Framework";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormContainer_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormContainer_FormClosing);
             this.menuStripLibrary.ResumeLayout(false);
             this.menuStripLibrary.PerformLayout();
