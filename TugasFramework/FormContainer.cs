@@ -25,11 +25,12 @@ namespace TugasFramework
             lib._SqlConnection.BukaKoneksi();
             isTerminated = false;
             FormLogin loginFirst = new FormLogin();
-            this.Hide();
             loginFirst.ShowDialog();
             if (!loginFirst.loginSukses)
             {
                 isTerminated = true;
+                lib._SqlConnection.TutupKoneksi();
+                return;
             }
             this.menuStripLibrary.Renderer = new Library.LibRender();
         }
