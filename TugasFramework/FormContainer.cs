@@ -22,14 +22,14 @@ namespace TugasFramework
         public FormContainer()
         {
             InitializeComponent();
-            lib._SqlConnection.BukaKoneksi();
+            lib.BukaKoneksi();
             isTerminated = false;
             FormLogin loginFirst = new FormLogin();
             loginFirst.ShowDialog();
             if (!loginFirst.loginSukses)
             {
                 isTerminated = true;
-                lib._SqlConnection.TutupKoneksi();
+                lib.TutupKoneksi();
                 return;
             }
             this.menuStripLibrary.Renderer = new Library.LibRender();
@@ -37,7 +37,7 @@ namespace TugasFramework
 
         private void FormContainer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            lib._SqlConnection.TutupKoneksi();
+            lib.TutupKoneksi();
         }
 
         private void ShowForm<T>(ref T newForm, bool showDialogMode)

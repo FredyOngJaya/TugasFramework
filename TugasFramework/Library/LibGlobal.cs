@@ -78,15 +78,59 @@ namespace TugasFramework.Library
         #region SQL
 
         /// <summary>
+        /// Buka koneksi ke database, atau koneksi ulang
+        /// </summary>
+        /// <param name="connection"></param>
+        public static void BukaKoneksi()
+        {
+            try
+            {
+                if (_SqlConnection.State != ConnectionState.Open)
+                {
+                    _SqlConnection.Open();
+                }
+                else if (_SqlConnection.State == ConnectionState.Broken)
+                {
+                    _SqlConnection.Close();
+                    _SqlConnection.Open();
+                }
+            }
+            catch (Exception e)
+            {
+                PesanError(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Tutup koneksi ke database
+        /// </summary>
+        /// <param name="connection"></param>
+        public static void TutupKoneksi()
+        {
+            if (_SqlConnection.State != ConnectionState.Closed)
+            {
+                _SqlConnection.Close();
+            }
+        }
+
+        /// <summary>
         /// Ambil data DB dalam tabel
         /// </summary>
         /// <param name="da"></param>
         /// <returns></returns>
         public static DataTable GetDataTable(SqlDataAdapter da)
         {
-            DataTable result = new DataTable();
-            da.Fill(result);
-            return result;
+            try
+            {
+                DataTable result = new DataTable();
+                da.Fill(result);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                PesanError(ex.Message);
+                return new DataTable();
+            }
         }
 
         /// <summary>
@@ -195,44 +239,58 @@ namespace TugasFramework.Library
         }
 
         #endregion
+
+        #region Form Control
+
+        /// <summary>
+        /// Untuk bersihkan text di textbox
+        /// </summary>
+        /// <param name="arrayTextBox"></param>
+        public static void BersihkanTextBox(TextBox[] arrayTextBox)
+        {
+            foreach (TextBox textbox in arrayTextBox)
+            {
+                textbox.Clear();
+            }
+        }
+        
+        /// <summary>
+        /// Untuk reset selection index combobox ke 0
+        /// </summary>
+        /// <param name="arrayComboBox"></param>
+        public static void ResetComboBox(ComboBox[] arrayComboBox)
+        {
+            foreach (ComboBox combobox in arrayComboBox)
+            {
+                if (combobox.Items.Count > 0)
+                {
+                    combobox.SelectedIndex = 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// ? dipake / g
+        /// </summary>
+        /// <param name="arrayTextBox"></param>
+        /// <returns></returns>
+        public static bool CheckTextBoxFilled(TextBox[] arrayTextBox)
+        {
+            bool result = true;
+            foreach (TextBox textbox in arrayTextBox)
+            {
+                if (textbox.Text.Equals(""))
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
+
+        #endregion
     }
 
     public static class LibExtensions
     {
-        /// <summary>
-        /// Buka koneksi ke database, atau koneksi ulang
-        /// </summary>
-        /// <param name="connection"></param>
-        public static void BukaKoneksi(this SqlConnection connection)
-        {
-            try
-            {
-                if (connection.State != ConnectionState.Open)
-                {
-                    connection.Open();
-                }
-                else if (connection.State == ConnectionState.Broken)
-                {
-                    connection.Close();
-                    connection.Open();
-                }
-            }
-            catch (Exception e)
-            {
-                LibGlobal.PesanError(e.Message);
-            }
-        }
-
-        /// <summary>
-        /// Tutup koneksi ke database
-        /// </summary>
-        /// <param name="connection"></param>
-        public static void TutupKoneksi(this SqlConnection connection)
-        {
-            if (connection.State != ConnectionState.Closed)
-            {
-                connection.Close();
-            }
-        }
     }
 }

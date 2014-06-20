@@ -53,7 +53,8 @@
             this.dataGridViewData.RowHeadersVisible = false;
             this.dataGridViewData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewData.Size = new System.Drawing.Size(646, 340);
-            this.dataGridViewData.TabIndex = 0;
+            this.dataGridViewData.TabIndex = 1;
+            this.dataGridViewData.TabStop = false;
             // 
             // labelCari
             // 
@@ -71,12 +72,14 @@
             this.textBoxCari.Location = new System.Drawing.Point(139, 12);
             this.textBoxCari.Name = "textBoxCari";
             this.textBoxCari.Size = new System.Drawing.Size(521, 23);
-            this.textBoxCari.TabIndex = 2;
+            this.textBoxCari.TabIndex = 0;
+            this.textBoxCari.TextChanged += new System.EventHandler(this.textBoxCari_TextChanged);
             // 
             // FormBrowse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(674, 396);
             this.Controls.Add(this.textBoxCari);
             this.Controls.Add(this.labelCari);
@@ -86,6 +89,7 @@
             this.Name = "FormBrowse";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cari";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewData)).EndInit();
             this.ResumeLayout(false);

@@ -17,11 +17,21 @@ namespace TugasFramework
         public Form1()
         {
             InitializeComponent();
-            lib._SqlConnection.BukaKoneksi();
-            lib.PesanError("ERROR");
-            lib.PesanInformasi("INFO");
-            lib.PesanPeringatan("WARNING");
-            lib.Pertanyaan("ARE U SURE");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // cara pake FormBrowse
+            FormBrowse browse = new FormBrowse("NAMA FORM TEST",
+                "select * from anggota", "LABEL CARI", @"NAMA", new string[] { "id" },
+                (sd, ev) =>
+                {
+                    DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
+                    textBox1.Text = row.Cells["id"].Value.ToString();
+                    textBox2.Text = row.Cells["nama"].Value.ToString();
+                });
+            browse.ShowDialog();
+            browse.Dispose();
         }
     }
 }
