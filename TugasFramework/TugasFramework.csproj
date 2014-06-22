@@ -122,6 +122,15 @@
     <EmbeddedResource Include="Library\FormBrowse.resx">
       <DependentUpon>FormBrowse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Master\FormAnggota.resx">
+      <DependentUpon>FormAnggota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\FormBuku.resx">
+      <DependentUpon>FormBuku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\FormPengarang.resx">
+      <DependentUpon>FormPengarang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -129,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FormPeminjaman.resx">
       <DependentUpon>FormPeminjaman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FormPengembalian.resx">
+      <DependentUpon>FormPengembalian.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
