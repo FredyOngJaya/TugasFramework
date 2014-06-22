@@ -14,7 +14,8 @@ namespace TugasFramework.Library
         /// <summary>
         /// ConnectionString ke database
         /// </summary>
-        private static string _SqlConnectionString = "Data Source = (local); Initial Catalog = Library; Integrated Security = True";
+        //private static string _SqlConnectionString = "Data Source = (local); Initial Catalog = Library; Integrated Security = True";
+        private static string _SqlConnectionString = @"Data Source = ONG\SQLEXPRESS; Initial Catalog = Library; Integrated Security = True";
         /// <summary>
         /// Koneksi SQL ke database
         /// </summary>
@@ -246,7 +247,7 @@ namespace TugasFramework.Library
         /// Untuk bersihkan text di textbox
         /// </summary>
         /// <param name="arrayTextBox"></param>
-        public static void BersihkanTextBox(TextBox[] arrayTextBox)
+        public static void ClearTextBox(TextBox[] arrayTextBox)
         {
             foreach (TextBox textbox in arrayTextBox)
             {
@@ -288,6 +289,74 @@ namespace TugasFramework.Library
         }
 
         #endregion
+
+        #region Browse
+
+        public static void BrowseMember(Control controlID)
+        {
+            FormBrowse browse = new FormBrowse("Cari Member", "select id as [Member ID], Nama from Anggota",
+                                            "Nama Member", "Nama", (sd, ev) =>
+                                            {
+                                                DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
+                                                controlID.Text = row.Cells["Member ID"].Value.ToString();
+                                            });
+            browse.ShowDialog();
+            browse.Dispose();
+        }
+
+        public static void BrowseBuku(Control controlID)
+        {
+            FormBrowse browse = new FormBrowse("Cari Buku", "select * from Buku",
+                                            "Judul Buku", "Judul", (sd, ev) =>
+                                            {
+                                                DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
+                                                controlID.Text = row.Cells["id"].Value.ToString();
+                                            });
+            browse.ShowDialog();
+            browse.Dispose();
+        }
+
+        public static void BrowsePeminjaman(Control controlID)
+        {
+            FormBrowse browse = new FormBrowse("Cari Peminjaman", "select a.id, b.nama as [Nama Peminjam], c.judul as [Judul Buku], "+
+                                                                "a.tanggal_pinjam as [Tanggal Peminjaman], a.sudah_kembali as [Status Kembali] "+
+                                                                "from peminjaman_buku a "+
+                                                                "inner join anggota b on a.id_anggota=b.id " +
+                                                                "inner join buku c on a.id_buku=c.id",
+                                            "Nama Peminjam", "Nama", (sd, ev) =>
+                                            {
+                                                DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
+                                                controlID.Text = row.Cells["id"].Value.ToString();
+                                            });
+            browse.ShowDialog();
+            browse.Dispose();
+        }
+
+        #endregion
+
+        public static DataRow GetDataAnggota(string IDAnggota)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Anggota where ID=@id", _SqlConnection);
+            cmd.Parameters.AddWithValue("@id", IDAnggota);
+            return GetDataRow(cmd);
+        }
+
+        public static DataRow GetDataBuku(string IDBuku)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Buku where ID=@id", _SqlConnection);
+            cmd.Parameters.AddWithValue("@id", IDBuku);
+            return GetDataRow(cmd);
+        }
+
+        public static DataRow GetDataPeminjaman(string IDPeminjaman)
+        {
+            SqlCommand cmd = new SqlCommand("select a.*, b.id as id_anggota, c.id as id_buku " +
+                                            "from peminjaman_buku a " +
+                                            "inner join anggota b on a.id_anggota=b.id " +
+                                            "inner join buku c on a.id_buku=c.id", _SqlConnection);
+            cmd.Parameters.AddWithValue("@id", IDPeminjaman);
+            return GetDataRow(cmd);
+        }
     }
 
     public static class LibExtensions

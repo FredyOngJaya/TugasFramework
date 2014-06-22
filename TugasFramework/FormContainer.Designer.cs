@@ -35,6 +35,7 @@
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.game2048ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.peminjamanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripLibrary.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,19 +56,21 @@
             // masterToolStripMenuItem
             // 
             this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
-            this.masterToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.masterToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.masterToolStripMenuItem.Text = "Master";
             // 
             // transaksiToolStripMenuItem
             // 
+            this.transaksiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.peminjamanToolStripMenuItem});
             this.transaksiToolStripMenuItem.Name = "transaksiToolStripMenuItem";
-            this.transaksiToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.transaksiToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.transaksiToolStripMenuItem.Text = "Transaksi";
             // 
             // laporanToolStripMenuItem
             // 
             this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
-            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.laporanToolStripMenuItem.Text = "Laporan";
             // 
             // gameToolStripMenuItem
@@ -75,22 +78,29 @@
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.game2048ToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.gameToolStripMenuItem.Text = "Game";
             // 
             // game2048ToolStripMenuItem
             // 
             this.game2048ToolStripMenuItem.Name = "game2048ToolStripMenuItem";
-            this.game2048ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.game2048ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.game2048ToolStripMenuItem.Text = "Game 2048";
             this.game2048ToolStripMenuItem.Click += new System.EventHandler(this.game2048ToolStripMenuItem_Click);
             // 
             // testingToolStripMenuItem
             // 
             this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
-            this.testingToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.testingToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.testingToolStripMenuItem.Text = "testing";
             this.testingToolStripMenuItem.Click += new System.EventHandler(this.testingToolStripMenuItem_Click);
+            // 
+            // peminjamanToolStripMenuItem
+            // 
+            this.peminjamanToolStripMenuItem.Name = "peminjamanToolStripMenuItem";
+            this.peminjamanToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.peminjamanToolStripMenuItem.Text = "Peminjaman";
+            this.peminjamanToolStripMenuItem.Click += new System.EventHandler(this.peminjamanToolStripMenuItem_Click);
             // 
             // FormContainer
             // 
@@ -124,5 +134,6 @@
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem game2048ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem peminjamanToolStripMenuItem;
     }
 }

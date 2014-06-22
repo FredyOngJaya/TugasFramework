@@ -87,6 +87,24 @@
     </Compile>
     <Compile Include="Library\LibGlobal.cs" />
     <Compile Include="Library\LibRender.cs" />
+    <Compile Include="Master\FormAnggota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\FormAnggota.Designer.cs">
+      <DependentUpon>FormAnggota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\FormBuku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\FormBuku.Designer.cs">
+      <DependentUpon>FormBuku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master\FormPengarang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\FormPengarang.Designer.cs">
+      <DependentUpon>FormPengarang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -109,6 +127,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FormPeminjaman.resx">
+      <DependentUpon>FormPeminjaman.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -122,9 +143,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Transaksi\FormPeminjaman.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FormPeminjaman.Designer.cs">
+      <DependentUpon>FormPeminjaman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaksi\FormPengembalian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FormPengembalian.Designer.cs">
+      <DependentUpon>FormPengembalian.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Laporan\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

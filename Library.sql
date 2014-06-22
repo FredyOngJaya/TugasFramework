@@ -25,7 +25,7 @@ go
 create table Buku
 (
 	id int identity(1,1),
-	nama varchar(255) not null,
+	judul varchar(255) not null,
 	constraint PK_Buku primary key (id)
 )
 go
@@ -74,5 +74,17 @@ create table Peminjaman_Buku
 go
 
 insert into Pengguna
-select 'ADMIN', CONVERT(varchar(50), HASHBYTES('SHA1', 'spasi'), 2)
+--select 'ADMIN', CONVERT(varchar(50), HASHBYTES('SHA1', 'spasi'), 2)
+select 'ADMIN', master.dbo.fn_varbintohexsubstring(0, HashBytes('SHA1', 'spasi'), 1, 0)
+go
+
+insert into anggota
+select * from (
+select 'stanley' a
+union select 'ong'
+union select 'darwin'
+union select 'acek'
+union select 'tom'
+union select 'her'
+) a
 go

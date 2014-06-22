@@ -15,8 +15,14 @@ namespace TugasFramework
 {
     public partial class FormContainer : Form
     {
+        private Master.FormAnggota anggota;
+        private Master.FormBuku buku;
+        private Master.FormPengarang pengarang;
+        private Transaksi.FormPeminjaman peminjaman;
+        private Transaksi.FormPengembalian pengembalian;
         private Game.Form2048 Game2048;
         private Form1 formTest;
+
         public bool isTerminated { get; private set; }
 
         public FormContainer()
@@ -74,6 +80,11 @@ namespace TugasFramework
         private void testingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(ref formTest);
+        }
+
+        private void peminjamanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ref peminjaman);
         }
     }
 }
