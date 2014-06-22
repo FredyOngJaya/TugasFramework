@@ -28,9 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FormPengembalian
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "FormPengembalian";
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(784, 412);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "FormPengembalian";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Pengembalian";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

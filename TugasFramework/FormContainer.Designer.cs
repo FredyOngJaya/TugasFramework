@@ -97,6 +97,7 @@
             // 
             // peminjamanToolStripMenuItem
             // 
+            this.peminjamanToolStripMenuItem.BackColor = System.Drawing.Color.WhiteSmoke;
             this.peminjamanToolStripMenuItem.Name = "peminjamanToolStripMenuItem";
             this.peminjamanToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.peminjamanToolStripMenuItem.Text = "Peminjaman";
@@ -115,6 +116,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormContainer";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Framework";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormContainer_FormClosing);

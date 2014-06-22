@@ -40,14 +40,14 @@
             this.buttonHapus = new System.Windows.Forms.Button();
             this.buttonBatal = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonBaru = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             this.textBoxIDBuku = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxJudulBuku = new System.Windows.Forms.TextBox();
             this.buttonBrowseBuku = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.buttonBaru = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -171,32 +171,6 @@
             this.panel1.Size = new System.Drawing.Size(516, 238);
             this.panel1.TabIndex = 11;
             // 
-            // buttonBaru
-            // 
-            this.buttonBaru.Location = new System.Drawing.Point(15, 333);
-            this.buttonBaru.Name = "buttonBaru";
-            this.buttonBaru.Size = new System.Drawing.Size(75, 30);
-            this.buttonBaru.TabIndex = 12;
-            this.buttonBaru.Text = "Baru";
-            this.buttonBaru.UseVisualStyleBackColor = true;
-            this.buttonBaru.Click += new System.EventHandler(this.buttonBaru_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(113, 92);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 25);
-            this.dateTimePicker1.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 98);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Tanggal";
-            // 
             // textBoxIDBuku
             // 
             this.textBoxIDBuku.Location = new System.Drawing.Point(113, 137);
@@ -241,10 +215,37 @@
             this.buttonBrowseBuku.UseVisualStyleBackColor = true;
             this.buttonBrowseBuku.Click += new System.EventHandler(this.buttonBrowseBuku_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Tanggal";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(113, 92);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 25);
+            this.dateTimePicker1.TabIndex = 5;
+            // 
+            // buttonBaru
+            // 
+            this.buttonBaru.Location = new System.Drawing.Point(15, 333);
+            this.buttonBaru.Name = "buttonBaru";
+            this.buttonBaru.Size = new System.Drawing.Size(75, 30);
+            this.buttonBaru.TabIndex = 12;
+            this.buttonBaru.Text = "Baru";
+            this.buttonBaru.UseVisualStyleBackColor = true;
+            this.buttonBaru.Click += new System.EventHandler(this.buttonBaru_Click);
+            // 
             // FormPeminjaman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(784, 412);
             this.Controls.Add(this.buttonBaru);
             this.Controls.Add(this.panel1);
@@ -258,6 +259,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormPeminjaman";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Input Peminjaman";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

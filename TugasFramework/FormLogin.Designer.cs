@@ -38,41 +38,41 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 24);
+            this.label1.Location = new System.Drawing.Point(22, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 16);
+            this.label1.Size = new System.Drawing.Size(67, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username";
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(113, 21);
+            this.textBoxUsername.Location = new System.Drawing.Point(113, 22);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(197, 23);
+            this.textBoxUsername.Size = new System.Drawing.Size(197, 25);
             this.textBoxUsername.TabIndex = 1;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(113, 50);
+            this.textBoxPassword.Location = new System.Drawing.Point(113, 53);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(197, 23);
+            this.textBoxPassword.Size = new System.Drawing.Size(197, 25);
             this.textBoxPassword.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 53);
+            this.label2.Location = new System.Drawing.Point(22, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 16);
+            this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password";
             // 
             // buttonMasuk
             // 
-            this.buttonMasuk.Location = new System.Drawing.Point(113, 79);
+            this.buttonMasuk.Location = new System.Drawing.Point(113, 84);
             this.buttonMasuk.Name = "buttonMasuk";
-            this.buttonMasuk.Size = new System.Drawing.Size(75, 25);
+            this.buttonMasuk.Size = new System.Drawing.Size(75, 27);
             this.buttonMasuk.TabIndex = 4;
             this.buttonMasuk.Text = "Masuk";
             this.buttonMasuk.UseVisualStyleBackColor = true;
@@ -80,21 +80,21 @@
             // 
             // FormLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(342, 126);
+            this.ClientSize = new System.Drawing.Size(334, 130);
             this.Controls.Add(this.buttonMasuk);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(350, 160);
+            this.MaximumSize = new System.Drawing.Size(350, 168);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(350, 160);
+            this.MinimumSize = new System.Drawing.Size(350, 168);
             this.Name = "FormLogin";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
