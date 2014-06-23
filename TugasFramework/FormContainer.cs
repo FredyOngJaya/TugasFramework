@@ -48,22 +48,36 @@ namespace TugasFramework
 
         private void ShowForm<T>(ref T newForm, bool showDialogMode)
         {
-            if (newForm == null || !(newForm as Form).IsHandleCreated)
+            try
             {
-                Type t = typeof(T);
-                Assembly a = Assembly.GetAssembly(t);
-                newForm = (T)Convert.ChangeType(a.CreateInstance(t.FullName), t);
+                if (newForm == null || !(newForm as Form).IsHandleCreated)
+                {
+                    Type t = typeof(T);
+                    Assembly a = Assembly.GetAssembly(t);
+                    newForm = (T)Convert.ChangeType(a.CreateInstance(t.FullName), t);
+                }
+                Form form = newForm as Form;
+                form.KeyPreview = true;
+                form.KeyDown += lib.enterAsTab;
+                form.KeyPress += lib.disableEnterErrorSound;
+                if (showDialogMode)
+                {
+                    form.ShowDialog();
+                }
+                else
+                {
+                    form.MdiParent = this;
+                    form.Show();
+                    form.Focus();
+                }
             }
-            Form form = newForm as Form;
-            if (showDialogMode)
+            catch (TargetInvocationException ex)
             {
-                form.ShowDialog();
+                lib.PesanError(ex.Message);
             }
-            else
+            catch (Exception ex)
             {
-                form.MdiParent = this;
-                form.Show();
-                form.Focus();
+                lib.PesanError(ex.Message);
             }
         }
 
@@ -72,19 +86,51 @@ namespace TugasFramework
             ShowForm(ref newForm, false);
         }
 
+        #region Master
+
+        private void anggotaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ref anggota);
+        }
+
+        private void bukuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ref buku);
+        }
+
+        private void pengarangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ref pengarang);
+        }
+
+        #endregion
+
+        #region Transaksi
+
+        private void peminjamanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ref peminjaman);
+        }
+
+        private void pengembalianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ref pengembalian);
+        }
+
+        #endregion
+
+        #region Game
+
         private void game2048ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(ref Game2048, true);
         }
 
+        #endregion
+
         private void testingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(ref formTest);
-        }
-
-        private void peminjamanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowForm(ref peminjaman);
         }
     }
 }

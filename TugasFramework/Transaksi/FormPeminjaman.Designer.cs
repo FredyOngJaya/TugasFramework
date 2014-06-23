@@ -39,16 +39,16 @@
             this.buttonSimpan = new System.Windows.Forms.Button();
             this.buttonHapus = new System.Windows.Forms.Button();
             this.buttonBatal = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelData = new System.Windows.Forms.Panel();
             this.textBoxIDBuku = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxJudulBuku = new System.Windows.Forms.TextBox();
             this.buttonBrowseBuku = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerTanggalPeminjaman = new System.Windows.Forms.DateTimePicker();
             this.buttonBaru = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.panelData.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -97,7 +97,7 @@
             // 
             // buttonBrowsePeminjaman
             // 
-            this.buttonBrowsePeminjaman.Location = new System.Drawing.Point(218, 12);
+            this.buttonBrowsePeminjaman.Location = new System.Drawing.Point(248, 12);
             this.buttonBrowsePeminjaman.Name = "buttonBrowsePeminjaman";
             this.buttonBrowsePeminjaman.Size = new System.Drawing.Size(31, 23);
             this.buttonBrowsePeminjaman.TabIndex = 7;
@@ -107,7 +107,7 @@
             // 
             // textBoxIDPeminjaman
             // 
-            this.textBoxIDPeminjaman.Location = new System.Drawing.Point(112, 12);
+            this.textBoxIDPeminjaman.Location = new System.Drawing.Point(142, 12);
             this.textBoxIDPeminjaman.Name = "textBoxIDPeminjaman";
             this.textBoxIDPeminjaman.Size = new System.Drawing.Size(100, 25);
             this.textBoxIDPeminjaman.TabIndex = 6;
@@ -118,13 +118,13 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 17);
+            this.label3.Size = new System.Drawing.Size(124, 17);
             this.label3.TabIndex = 5;
-            this.label3.Text = "ID Peminjaman";
+            this.label3.Text = "Nomor Peminjaman";
             // 
             // buttonSimpan
             // 
-            this.buttonSimpan.Location = new System.Drawing.Point(96, 333);
+            this.buttonSimpan.Location = new System.Drawing.Point(96, 267);
             this.buttonSimpan.Name = "buttonSimpan";
             this.buttonSimpan.Size = new System.Drawing.Size(75, 30);
             this.buttonSimpan.TabIndex = 8;
@@ -134,7 +134,7 @@
             // 
             // buttonHapus
             // 
-            this.buttonHapus.Location = new System.Drawing.Point(177, 333);
+            this.buttonHapus.Location = new System.Drawing.Point(177, 267);
             this.buttonHapus.Name = "buttonHapus";
             this.buttonHapus.Size = new System.Drawing.Size(75, 30);
             this.buttonHapus.TabIndex = 9;
@@ -144,32 +144,33 @@
             // 
             // buttonBatal
             // 
-            this.buttonBatal.Location = new System.Drawing.Point(258, 333);
+            this.buttonBatal.Location = new System.Drawing.Point(258, 267);
             this.buttonBatal.Name = "buttonBatal";
             this.buttonBatal.Size = new System.Drawing.Size(75, 30);
             this.buttonBatal.TabIndex = 10;
             this.buttonBatal.Text = "Batal";
             this.buttonBatal.UseVisualStyleBackColor = true;
+            this.buttonBatal.Click += new System.EventHandler(this.buttonBatal_Click);
             // 
-            // panel1
+            // panelData
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.textBoxIDBuku);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBoxJudulBuku);
-            this.panel1.Controls.Add(this.buttonBrowseBuku);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.textBoxIDMember);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBoxNamaMember);
-            this.panel1.Controls.Add(this.buttonBrowseMember);
-            this.panel1.Location = new System.Drawing.Point(15, 43);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(516, 238);
-            this.panel1.TabIndex = 11;
+            this.panelData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelData.Controls.Add(this.textBoxIDBuku);
+            this.panelData.Controls.Add(this.label5);
+            this.panelData.Controls.Add(this.label6);
+            this.panelData.Controls.Add(this.textBoxJudulBuku);
+            this.panelData.Controls.Add(this.buttonBrowseBuku);
+            this.panelData.Controls.Add(this.label4);
+            this.panelData.Controls.Add(this.dateTimePickerTanggalPeminjaman);
+            this.panelData.Controls.Add(this.textBoxIDMember);
+            this.panelData.Controls.Add(this.label1);
+            this.panelData.Controls.Add(this.label2);
+            this.panelData.Controls.Add(this.textBoxNamaMember);
+            this.panelData.Controls.Add(this.buttonBrowseMember);
+            this.panelData.Location = new System.Drawing.Point(15, 43);
+            this.panelData.Name = "panelData";
+            this.panelData.Size = new System.Drawing.Size(605, 218);
+            this.panelData.TabIndex = 11;
             // 
             // textBoxIDBuku
             // 
@@ -224,16 +225,17 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Tanggal";
             // 
-            // dateTimePicker1
+            // dateTimePickerTanggalPeminjaman
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(113, 92);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 25);
-            this.dateTimePicker1.TabIndex = 5;
+            this.dateTimePickerTanggalPeminjaman.Enabled = false;
+            this.dateTimePickerTanggalPeminjaman.Location = new System.Drawing.Point(113, 92);
+            this.dateTimePickerTanggalPeminjaman.Name = "dateTimePickerTanggalPeminjaman";
+            this.dateTimePickerTanggalPeminjaman.Size = new System.Drawing.Size(200, 25);
+            this.dateTimePickerTanggalPeminjaman.TabIndex = 5;
             // 
             // buttonBaru
             // 
-            this.buttonBaru.Location = new System.Drawing.Point(15, 333);
+            this.buttonBaru.Location = new System.Drawing.Point(15, 267);
             this.buttonBaru.Name = "buttonBaru";
             this.buttonBaru.Size = new System.Drawing.Size(75, 30);
             this.buttonBaru.TabIndex = 12;
@@ -246,9 +248,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(784, 412);
+            this.ClientSize = new System.Drawing.Size(632, 326);
             this.Controls.Add(this.buttonBaru);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelData);
             this.Controls.Add(this.buttonBatal);
             this.Controls.Add(this.buttonHapus);
             this.Controls.Add(this.buttonSimpan);
@@ -261,8 +263,8 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Input Peminjaman";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelData.ResumeLayout(false);
+            this.panelData.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,9 +283,9 @@
         private System.Windows.Forms.Button buttonSimpan;
         private System.Windows.Forms.Button buttonHapus;
         private System.Windows.Forms.Button buttonBatal;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelData;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTanggalPeminjaman;
         private System.Windows.Forms.Button buttonBaru;
         private System.Windows.Forms.TextBox textBoxIDBuku;
         private System.Windows.Forms.Label label5;

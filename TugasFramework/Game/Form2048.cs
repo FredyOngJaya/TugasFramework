@@ -17,6 +17,7 @@ namespace TugasFramework.Game
         private int size;
         private int startTiles;
         private int score;
+        private int bestScore;
         private bool over;
         private bool won;
         private bool keepPlaying;
@@ -174,7 +175,6 @@ namespace TugasFramework.Game
 
             public void insertTile(Tile tile)
             {
-                //this.cells[tile.x, tile.y].value = tile.value;
                 this.cells[tile.x, tile.y] = tile;
             }
 
@@ -198,6 +198,9 @@ namespace TugasFramework.Game
         {
             InitializeComponent();
 
+            this.panelGameOver.BackColor = Color.FromArgb(238, 228, 218);
+            this.panelWin.BackColor = Color.FromArgb(237, 194, 46);
+
             this.size = 4;
             this.startTiles = 2;
             random = new Random(DateTime.Now.Millisecond);
@@ -205,10 +208,9 @@ namespace TugasFramework.Game
             this.place = new Button[this.size, this.size];
             for (int y = 0; y < this.size; y++)
             {
-                dataGridView1.Columns.Add("P" + y, "P" + y);
                 for (int x = 0; x < this.size; x++)
                 {
-                    place[x, y] = this.Controls["button" + x + y] as Button;
+                    place[x, y] = this.panelGrid.Controls["button" + x + y] as Button;
                 }
             }
 
@@ -247,12 +249,18 @@ namespace TugasFramework.Game
             // 65536    3c3a32
             tileBackgroundColor[1 << 16] = Color.FromArgb(0x3c, 0x3a, 0x32);
 
+            this.panelGrid.Visible = true;
+            this.panelWin.Visible = false;
+            this.panelGameOver.Visible = false;
+            this.buttonTryAgain.Click += buttonRestart_Click;
+            this.buttonTryAgainWin.Click += buttonRestart_Click;
+
             this.setup();
-            this.label1.Focus();
         }
 
-        private void Form2048_KeyDown(object sender, KeyEventArgs e)
+        private void Form2048_KeyUp(object sender, KeyEventArgs e)
         {
+
             if (e.KeyCode == Keys.Down)
             {
                 this.move((int)Direct.Down);
@@ -271,7 +279,7 @@ namespace TugasFramework.Game
             }
         }
 
-        private void showGrid()
+        private void actuate()
         {
             string[] a = new string[this.size];
             for (int y = 0; y < this.size; y++)
@@ -291,8 +299,28 @@ namespace TugasFramework.Game
                     place[x, y].BackColor = tileBackgroundColor[t.value];
                 }
             }
+            if (this.bestScore < this.score)
+            {
+                this.bestScore = this.score;
+            }
             this.labelScore.Text = this.score.ToString();
-            //Application.DoEvents();
+            this.labelBestScore.Text = this.bestScore.ToString();
+
+            if (this.isGameTerminated())
+            {
+                if (this.over)
+                {
+                    this.panelGrid.Visible = false;
+                    this.panelWin.Visible = false;
+                    this.panelGameOver.Visible = true;
+                }
+                else if (this.won)
+                {
+                    this.panelGrid.Visible = false;
+                    this.panelWin.Visible = true;
+                    this.panelGameOver.Visible = false;
+                }
+            }
         }
 
         private void setup()
@@ -319,7 +347,7 @@ namespace TugasFramework.Game
                 // Add the initial tiles
                 this.addStartTiles();
             }
-            this.showGrid();
+            this.actuate();
         }
 
         private GameData getGameState()
@@ -343,6 +371,7 @@ namespace TugasFramework.Game
             //    }
             //}
             //data.grid = tile;
+            data.grid = null;
             data.size = 4;
             data.score = 1000;
             data.over = false;
@@ -365,7 +394,7 @@ namespace TugasFramework.Game
             {
                 int value = (random.NextDouble() < 0.9) ? 2 : 4;
                 Tile tile = new Tile(this.grid.randomAvailableCells(), value);
-                grid.insertTile(tile);
+                this.grid.insertTile(tile);
             }
         }
 
@@ -428,10 +457,10 @@ namespace TugasFramework.Game
             {
                 for (int j = 0; j < this.size; j++)
                 {
-                    if (grid.cells[i, j].value > 0)
+                    if (this.grid.cells[i, j].value > 0)
                     {
-                        grid.cells[i, j].savePosition();
-                        grid.cells[i, j].mergeFrom = null;
+                        this.grid.cells[i, j].savePosition();
+                        this.grid.cells[i, j].mergeFrom = null;
                     }
                 }
             }
@@ -441,7 +470,6 @@ namespace TugasFramework.Game
         {
             this.grid.cells[tile.x, tile.y].value = 0;
             this.grid.cells[cell.x, cell.y].value = tile.value;
-            //tile.updatePosition(cell);
         }
 
         private void move(int direction)
@@ -477,7 +505,6 @@ namespace TugasFramework.Game
                             this.grid.insertTile(merged);
                             this.grid.removeTile(tile);
 
-                            //tile.updatePosition(positions[1]);
                             this.grid.cells[positions[1].x, positions[1].y].updatePosition(positions[1]);
 
                             this.score += merged.value;
@@ -510,7 +537,7 @@ namespace TugasFramework.Game
                     this.over = true; // Game over!
                 }
             }
-            this.showGrid();
+            this.actuate();
         }
 
         private List<int>[] buildTraversals(Coordinat vector)
@@ -541,6 +568,26 @@ namespace TugasFramework.Game
             result[0] = prev;
             result[1] = cell;
             return result;
+        }
+
+        private void ContinueGame()
+        {
+            panelGrid.Visible = true;
+            panelWin.Visible = false;
+            panelGameOver.Visible = false;
+        }
+
+        private void buttonKeepGoing_Click(object sender, EventArgs e)
+        {
+            this.keepPlaying = true;
+            this.ContinueGame();
+        }
+
+        private void buttonRestart_Click(object sender, EventArgs e)
+        {
+            // clear game state
+            this.ContinueGame();
+            this.setup();
         }
     }
 }

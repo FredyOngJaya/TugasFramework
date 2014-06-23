@@ -18,6 +18,7 @@ create table Pengguna
 (
 	username varchar(64) not null,
 	fingerprint varchar(50) not null,
+	tipe varchar(10) not null,
 	constraint PK_Pengguna primary key (username)
 )
 go
@@ -52,8 +53,13 @@ go
 create table Anggota
 (
 	id int identity(1,1),
+	nomor_identitas varchar(64) not null,
 	nama varchar(255) not null,
-	constraint PK_Anggota primary key (id)
+	alamat varchar(255) not null,
+	hp varchar(16) not null,
+	status_aktif bit not null default 1,
+	constraint PK_Anggota primary key (id),
+	constraint UQ_Anggota unique (nomor_identitas)
 )
 go
 
@@ -75,16 +81,17 @@ go
 
 insert into Pengguna
 --select 'ADMIN', CONVERT(varchar(50), HASHBYTES('SHA1', 'spasi'), 2)
-select 'ADMIN', master.dbo.fn_varbintohexsubstring(0, HashBytes('SHA1', 'spasi'), 1, 0)
+select 'admin', master.dbo.fn_varbintohexsubstring(0, HashBytes('SHA1', 'spasi'), 1, 0), 'private'
+union select 'member', master.dbo.fn_varbintohexsubstring(0, HashBytes('SHA1', 'member'), 1, 0), 'public'
 go
 
 insert into anggota
 select * from (
-select 'stanley' a
-union select 'ong'
-union select 'darwin'
-union select 'acek'
-union select 'tom'
-union select 'her'
+select '1' a,'stanley' b,'alamat tak jelas' c,'080000000000' d,1 e
+union select '2','ong','alamat tak jelas','080000000000',1
+union select '3','darwin','alamat tak jelas','080000000000',1
+union select '4','acek','alamat tak jelas','080000000000',1
+union select '5','tom','alamat tak jelas','080000000000',1
+union select '6','her','alamat tak jelas','080000000000',1
 ) a
 go

@@ -21,7 +21,7 @@ namespace TugasFramework.Transaksi
         {
             InitializeComponent();
             arrayTextbox = new TextBox[] { textBoxIDPeminjaman, textBoxIDMember, textBoxIDBuku, textBoxNamaMember, textBoxJudulBuku };
-            buttonBatal.Click += new EventHandler(buttonBaru_Click);
+            buttonBatal_Click(null, null);
         }
 
         private void buttonBrowseMember_Click(object sender, EventArgs e)
@@ -55,6 +55,7 @@ namespace TugasFramework.Transaksi
                 {
                     //sudah ada peminjaman fill data
                     textBoxIDMember.Text = row["id"].ToString();
+                    SetButton(false, false, true, true);
                     textBoxIDMember_Leave(null, null);
                 }
             }
@@ -77,9 +78,27 @@ namespace TugasFramework.Transaksi
             }
         }
 
+        private void SetButton(bool baru, bool simpan, bool hapus, bool batal)
+        {
+            buttonBaru.Enabled = baru;
+            buttonSimpan.Enabled = simpan;
+            buttonHapus.Enabled = hapus;
+            buttonBatal.Enabled = batal;
+        }
+
+        private void SetForm(bool pinjam, bool panel)
+        {
+            textBoxIDPeminjaman.Enabled = pinjam;
+            buttonBrowsePeminjaman.Enabled = pinjam;
+            panelData.Enabled = panel;
+        }
+
         private void buttonBaru_Click(object sender, EventArgs e)
         {
             lib.ClearTextBox(arrayTextbox);
+            dateTimePickerTanggalPeminjaman.Value = lib.GetDate();
+            SetForm(false, true);
+            SetButton(false, true, false, true);
         }
 
         private void buttonSimpan_Click(object sender, EventArgs e)
@@ -87,8 +106,11 @@ namespace TugasFramework.Transaksi
             try
             {
                 SqlCommand cmd = new SqlCommand("insert into peminjaman values(@id_anggota,@id_buku,GETDATE(),0,null)", lib._SqlConnection);
+                cmd.Parameters.AddWithValue("@id_anggota", textBoxIDMember.Text);
+                cmd.Parameters.AddWithValue("@id_buku", textBoxIDBuku.Text);
                 cmd.ExecuteNonQuery();
                 lib.PesanInformasi("Data peminjaman sudah disimpan");
+                buttonBatal_Click(null, null);
             }
             catch (Exception ex)
             {
@@ -106,12 +128,20 @@ namespace TugasFramework.Transaksi
                     cmd.Parameters.AddWithValue("@id", textBoxIDPeminjaman.Text);
                     cmd.ExecuteNonQuery();
                     lib.PesanInformasi("Data sudah terhapus");
+                    buttonBatal_Click(null, null);
                 }
                 catch (Exception ex)
                 {
                     lib.PesanError(ex.Message);
                 }
             }
+        }
+
+        private void buttonBatal_Click(object sender, EventArgs e)
+        {
+            lib.ClearTextBox(arrayTextbox);
+            SetForm(true, false);
+            SetButton(true, false, false, false);
         }
     }
 }

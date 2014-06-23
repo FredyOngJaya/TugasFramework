@@ -14,8 +14,8 @@ namespace TugasFramework.Library
         /// <summary>
         /// ConnectionString ke database
         /// </summary>
-        //private static string _SqlConnectionString = "Data Source = (local); Initial Catalog = Library; Integrated Security = True";
-        private static string _SqlConnectionString = @"Data Source = ONG\SQLEXPRESS; Initial Catalog = Library; Integrated Security = True";
+        private static string _SqlConnectionString = "Data Source = (local); Initial Catalog = Library; Integrated Security = True";
+        //private static string _SqlConnectionString = @"Data Source = ONG\SQLEXPRESS; Initial Catalog = Library; Integrated Security = True";
         /// <summary>
         /// Koneksi SQL ke database
         /// </summary>
@@ -26,6 +26,13 @@ namespace TugasFramework.Library
         public static KeyEventHandler enterAsTab = (s, e) =>
         {
             if (e.KeyCode == Keys.Enter) SendKeys.Send("{TAB}");
+        };
+        /// <summary>
+        /// KeyPressEventHandler enter supaya tidak ada sound beep
+        /// </summary>
+        public static KeyPressEventHandler disableEnterErrorSound = (s, e) =>
+        {
+            if (e.KeyChar == (char)Keys.Enter) e.Handled = true;
         };
 
         #region MessageBox
@@ -99,6 +106,7 @@ namespace TugasFramework.Library
             catch (Exception e)
             {
                 PesanError(e.Message);
+                Application.ExitThread();
             }
         }
 
@@ -112,6 +120,11 @@ namespace TugasFramework.Library
             {
                 _SqlConnection.Close();
             }
+        }
+
+        public static DateTime GetDate()
+        {
+            return Convert.ToDateTime(GetObject("select GETDATE()"));
         }
 
         /// <summary>
