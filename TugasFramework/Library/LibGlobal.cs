@@ -366,10 +366,7 @@ namespace TugasFramework.Library
 
         public static DataRow GetDataPeminjaman(string IDPeminjaman)
         {
-            SqlCommand cmd = new SqlCommand("select a.*, b.id as id_anggota, c.id as id_buku " +
-                                            "from peminjaman_buku a " +
-                                            "inner join anggota b on a.id_anggota=b.id " +
-                                            "inner join buku c on a.id_buku=c.id", _SqlConnection);
+            SqlCommand cmd = new SqlCommand("select * from peminjaman_buku where ID=@id", _SqlConnection);
             cmd.Parameters.AddWithValue("@id", IDPeminjaman);
             return GetDataRow(cmd);
         }

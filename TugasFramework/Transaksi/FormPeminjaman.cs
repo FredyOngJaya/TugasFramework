@@ -80,7 +80,7 @@ namespace TugasFramework.Transaksi
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("insert into peminjaman "+
+                SqlCommand cmd = new SqlCommand("insert into Peminjaman_Buku "+
                     "values(@id_anggota,@id_buku,GETDATE(),0,null)", lib._SqlConnection);
                 cmd.Parameters.AddWithValue("@id_anggota", textBoxIDMember.Text);
                 cmd.Parameters.AddWithValue("@id_buku", textBoxIDBuku.Text);
@@ -132,9 +132,12 @@ namespace TugasFramework.Transaksi
                 if (row != null)
                 {
                     //sudah ada peminjaman fill data
-                    textBoxIDMember.Text = row["id"].ToString();
+                    textBoxIDMember.Text = row["id_anggota"].ToString();
+                    textBoxIDBuku.Text = row["id_buku"].ToString();
+                    dateTimePickerTanggalPeminjaman.Value = Convert.ToDateTime(row["tanggal_pinjam"]);
                     SetButton(false, false, true, true);
                     textBoxIDMember_Leave(null, null);
+                    textBoxIDBuku_Leave(null, null);
                 }
             }
         }

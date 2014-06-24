@@ -17,6 +17,7 @@ namespace TugasFramework.Transaksi
     {
         TextBox[] arrayTextbox;
         SqlTransaction _SqlTransaction;
+        List<int> listIDPeminjaman = new List<int>();
 
         public FormPengembalian()
         {
@@ -45,8 +46,17 @@ namespace TugasFramework.Transaksi
                 "Nama Peminjam", "Nama", (sd, ev) =>
                 {
                     DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
-                    dataGridViewDataPeminjaman.Rows.Add(new object[] { row.Cells["id"],
-                        row.Cells["judul buku"], row.Cells["tanggal peminjaman"] });
+                    int id_pinjam = Convert.ToInt32(row.Cells["id"].Value);
+                    if (listIDPeminjaman.Select(x => x == id_pinjam).ToList().Count == 0)
+                    {
+                        listIDPeminjaman.Add(id_pinjam);
+                        dataGridViewDataPeminjaman.Rows.Add(new object[] { row.Cells["id"].Value,
+                        row.Cells["judul buku"].Value, row.Cells["tanggal peminjaman"].Value });
+                    }
+                    else
+                    {
+                        lib.PesanInformasi("Data peminjaman ini sudah ditambahkan");
+                    }
                 });
             browse.ShowDialog();
             browse.Dispose();
@@ -86,6 +96,7 @@ namespace TugasFramework.Transaksi
         {
             lib.ClearTextBox(arrayTextbox);
             dataGridViewDataPeminjaman.Rows.Clear();
+            listIDPeminjaman.Clear();
             SetForm(true, false);
             SetButton(false, true, true);
         }

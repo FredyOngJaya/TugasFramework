@@ -70,7 +70,7 @@ create table Peminjaman_Buku
 	id_buku int,
 	tanggal_pinjam datetime not null,
 	sudah_kembali bit not null default 0,
-	tanggal_kembali datetime not null,
+	tanggal_kembali datetime,
 	constraint PK_Peminjaman_Buku_Detail primary key (id),
 	constraint FK_Peminjaman_Buku_Detail_ref_Anggota foreign key (id_anggota)
 		references Anggota (id),
@@ -85,7 +85,7 @@ select 'admin', master.dbo.fn_varbintohexsubstring(0, HashBytes('SHA1', 'spasi')
 union select 'member', master.dbo.fn_varbintohexsubstring(0, HashBytes('SHA1', 'member'), 1, 0), 'public'
 go
 
-insert into anggota
+insert into Anggota
 select * from (
 select '1' a,'stanley' b,'alamat tak jelas' c,'080000000000' d,1 e
 union select '2','ong','alamat tak jelas','080000000000',1
@@ -93,5 +93,38 @@ union select '3','darwin','alamat tak jelas','080000000000',1
 union select '4','acek','alamat tak jelas','080000000000',1
 union select '5','tom','alamat tak jelas','080000000000',1
 union select '6','her','alamat tak jelas','080000000000',1
+) a
+go
+
+insert into Buku
+select * from (
+select 'buku1' a
+union select 'buku2'
+union select 'buku3'
+union select 'buku4'
+union select 'buku5'
+) a
+go
+
+insert into Pengarang
+select * from (
+select 'pengarang1' a
+union select 'pengarang2'
+union select 'pengarang3'
+union select 'pengarang4'
+union select 'pengarang5'
+) a
+go
+
+insert into Pengarang_Buku
+select * from (
+select 1 a, 1 b
+union select 2, 1
+union select 2, 2
+union select 2, 3
+union select 3, 3
+union select 4, 4
+union select 4, 5
+union select 5, 5
 ) a
 go
