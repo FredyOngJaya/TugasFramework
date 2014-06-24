@@ -30,16 +30,17 @@
         {
             this.menuStripLibrary = new System.Windows.Forms.MenuStrip();
             this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.anggotaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bukuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pengarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peminjamanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pengembalianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.game2048ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.anggotaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bukuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pengarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pengembalianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laporanPeminjamanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripLibrary.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +68,27 @@
             this.masterToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.masterToolStripMenuItem.Text = "Master";
             // 
+            // anggotaToolStripMenuItem
+            // 
+            this.anggotaToolStripMenuItem.Name = "anggotaToolStripMenuItem";
+            this.anggotaToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.anggotaToolStripMenuItem.Text = "Anggota";
+            this.anggotaToolStripMenuItem.Click += new System.EventHandler(this.anggotaToolStripMenuItem_Click);
+            // 
+            // bukuToolStripMenuItem
+            // 
+            this.bukuToolStripMenuItem.Name = "bukuToolStripMenuItem";
+            this.bukuToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.bukuToolStripMenuItem.Text = "Buku";
+            this.bukuToolStripMenuItem.Click += new System.EventHandler(this.bukuToolStripMenuItem_Click);
+            // 
+            // pengarangToolStripMenuItem
+            // 
+            this.pengarangToolStripMenuItem.Name = "pengarangToolStripMenuItem";
+            this.pengarangToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.pengarangToolStripMenuItem.Text = "Pengarang";
+            this.pengarangToolStripMenuItem.Click += new System.EventHandler(this.pengarangToolStripMenuItem_Click);
+            // 
             // transaksiToolStripMenuItem
             // 
             this.transaksiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -80,12 +102,21 @@
             // 
             this.peminjamanToolStripMenuItem.BackColor = System.Drawing.Color.WhiteSmoke;
             this.peminjamanToolStripMenuItem.Name = "peminjamanToolStripMenuItem";
-            this.peminjamanToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.peminjamanToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.peminjamanToolStripMenuItem.Text = "Peminjaman";
             this.peminjamanToolStripMenuItem.Click += new System.EventHandler(this.peminjamanToolStripMenuItem_Click);
             // 
+            // pengembalianToolStripMenuItem
+            // 
+            this.pengembalianToolStripMenuItem.Name = "pengembalianToolStripMenuItem";
+            this.pengembalianToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.pengembalianToolStripMenuItem.Text = "Pengembalian";
+            this.pengembalianToolStripMenuItem.Click += new System.EventHandler(this.pengembalianToolStripMenuItem_Click);
+            // 
             // laporanToolStripMenuItem
             // 
+            this.laporanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.laporanPeminjamanToolStripMenuItem});
             this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
             this.laporanToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.laporanToolStripMenuItem.Text = "Laporan";
@@ -112,33 +143,12 @@
             this.testingToolStripMenuItem.Text = "testing";
             this.testingToolStripMenuItem.Click += new System.EventHandler(this.testingToolStripMenuItem_Click);
             // 
-            // anggotaToolStripMenuItem
+            // laporanPeminjamanToolStripMenuItem
             // 
-            this.anggotaToolStripMenuItem.Name = "anggotaToolStripMenuItem";
-            this.anggotaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.anggotaToolStripMenuItem.Text = "Anggota";
-            this.anggotaToolStripMenuItem.Click += new System.EventHandler(this.anggotaToolStripMenuItem_Click);
-            // 
-            // bukuToolStripMenuItem
-            // 
-            this.bukuToolStripMenuItem.Name = "bukuToolStripMenuItem";
-            this.bukuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.bukuToolStripMenuItem.Text = "Buku";
-            this.bukuToolStripMenuItem.Click += new System.EventHandler(this.bukuToolStripMenuItem_Click);
-            // 
-            // pengarangToolStripMenuItem
-            // 
-            this.pengarangToolStripMenuItem.Name = "pengarangToolStripMenuItem";
-            this.pengarangToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.pengarangToolStripMenuItem.Text = "Pengarang";
-            this.pengarangToolStripMenuItem.Click += new System.EventHandler(this.pengarangToolStripMenuItem_Click);
-            // 
-            // pengembalianToolStripMenuItem
-            // 
-            this.pengembalianToolStripMenuItem.Name = "pengembalianToolStripMenuItem";
-            this.pengembalianToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.pengembalianToolStripMenuItem.Text = "Pengembalian";
-            this.pengembalianToolStripMenuItem.Click += new System.EventHandler(this.pengembalianToolStripMenuItem_Click);
+            this.laporanPeminjamanToolStripMenuItem.Name = "laporanPeminjamanToolStripMenuItem";
+            this.laporanPeminjamanToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.laporanPeminjamanToolStripMenuItem.Text = "Laporan Peminjaman";
+            this.laporanPeminjamanToolStripMenuItem.Click += new System.EventHandler(this.laporanPeminjamanToolStripMenuItem_Click);
             // 
             // FormContainer
             // 
@@ -178,5 +188,6 @@
         private System.Windows.Forms.ToolStripMenuItem bukuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pengarangToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pengembalianToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem laporanPeminjamanToolStripMenuItem;
     }
 }

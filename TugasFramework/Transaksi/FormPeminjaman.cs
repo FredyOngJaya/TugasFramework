@@ -78,19 +78,30 @@ namespace TugasFramework.Transaksi
 
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
-            try
+            if (textBoxNamaMember.Text.Equals(""))
             {
-                SqlCommand cmd = new SqlCommand("insert into Peminjaman_Buku "+
-                    "values(@id_anggota,@id_buku,GETDATE(),0,null)", lib._SqlConnection);
-                cmd.Parameters.AddWithValue("@id_anggota", textBoxIDMember.Text);
-                cmd.Parameters.AddWithValue("@id_buku", textBoxIDBuku.Text);
-                cmd.ExecuteNonQuery();
-                lib.PesanInformasi("Data peminjaman sudah disimpan");
-                buttonBatal_Click(null, null);
+                lib.PesanInformasi("Data anggota belum diinput");
             }
-            catch (Exception ex)
+            else if (textBoxJudulBuku.Text.Equals(""))
             {
-                lib.PesanError(ex.Message);
+                lib.PesanInformasi("Data buku belum diinput");
+            }
+            else
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("insert into Peminjaman_Buku " +
+                        "values(@id_anggota,@id_buku,GETDATE(),0,null)", lib._SqlConnection);
+                    cmd.Parameters.AddWithValue("@id_anggota", textBoxIDMember.Text);
+                    cmd.Parameters.AddWithValue("@id_buku", textBoxIDBuku.Text);
+                    cmd.ExecuteNonQuery();
+                    lib.PesanInformasi("Data peminjaman sudah disimpan");
+                    buttonBatal_Click(null, null);
+                }
+                catch (Exception ex)
+                {
+                    lib.PesanError(ex.Message);
+                }
             }
         }
 
@@ -131,13 +142,21 @@ namespace TugasFramework.Transaksi
                 DataRow row = lib.GetDataPeminjaman(textBoxIDPeminjaman.Text);
                 if (row != null)
                 {
-                    //sudah ada peminjaman fill data
-                    textBoxIDMember.Text = row["id_anggota"].ToString();
-                    textBoxIDBuku.Text = row["id_buku"].ToString();
-                    dateTimePickerTanggalPeminjaman.Value = Convert.ToDateTime(row["tanggal_pinjam"]);
-                    SetButton(false, false, true, true);
-                    textBoxIDMember_Leave(null, null);
-                    textBoxIDBuku_Leave(null, null);
+                    if (Convert.ToBoolean(row["sudah_kembali"]))
+                    {
+                        lib.ClearTextBox(arrayTextbox);
+                        lib.PesanPeringatan("Peminjaman buku ini sudah dikembalikan");
+                    }
+                    else
+                    {
+                        //sudah ada peminjaman fill data
+                        textBoxIDMember.Text = row["id_anggota"].ToString();
+                        textBoxIDBuku.Text = row["id_buku"].ToString();
+                        dateTimePickerTanggalPeminjaman.Value = Convert.ToDateTime(row["tanggal_pinjam"]);
+                        SetButton(false, false, true, true);
+                        textBoxIDMember_Leave(null, null);
+                        textBoxIDBuku_Leave(null, null);
+                    }
                 }
             }
         }

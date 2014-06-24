@@ -54,7 +54,7 @@ namespace TugasFramework.Library
         /// <returns></returns>
         public static DialogResult PesanPeringatan(string pesan)
         {
-            return MessageBox.Show(pesan, "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            return MessageBox.Show(pesan, "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         /// <summary>
@@ -290,15 +290,7 @@ namespace TugasFramework.Library
         /// <returns></returns>
         public static bool CheckTextBoxFilled(TextBox[] arrayTextBox)
         {
-            bool result = true;
-            foreach (TextBox textbox in arrayTextBox)
-            {
-                if (textbox.Text.Equals(""))
-                {
-                    result = false;
-                }
-            }
-            return result;
+            return arrayTextBox.Count(tb => tb.Text.Equals("")) > 0;
         }
 
         #endregion

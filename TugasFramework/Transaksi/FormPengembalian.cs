@@ -42,12 +42,12 @@ namespace TugasFramework.Transaksi
                 "from peminjaman_buku a " +
                 "inner join anggota b on a.id_anggota=b.id " +
                 "inner join buku c on a.id_buku=c.id " +
-                "where a.id_anggota=" + textBoxIDMember.Text,
+                "where a.sudah_kembali=0 and a.id_anggota=" + textBoxIDMember.Text,
                 "Nama Peminjam", "Nama", (sd, ev) =>
                 {
                     DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
                     int id_pinjam = Convert.ToInt32(row.Cells["id"].Value);
-                    if (listIDPeminjaman.Select(x => x == id_pinjam).ToList().Count == 0)
+                    if (listIDPeminjaman.Count(x => x == id_pinjam) == 0)
                     {
                         listIDPeminjaman.Add(id_pinjam);
                         dataGridViewDataPeminjaman.Rows.Add(new object[] { row.Cells["id"].Value,

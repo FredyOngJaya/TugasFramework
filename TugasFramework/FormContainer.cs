@@ -20,6 +20,7 @@ namespace TugasFramework
         private Master.FormPengarang pengarang;
         private Transaksi.FormPeminjaman peminjaman;
         private Transaksi.FormPengembalian pengembalian;
+        private Laporan.FormLaporanPeminjamanBuku laporanPeminjaman;
         private Game.Form2048 Game2048;
         private Form1 formTest;
 
@@ -131,6 +132,11 @@ namespace TugasFramework
         private void testingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(ref formTest);
+        }
+
+        private void laporanPeminjamanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ref laporanPeminjaman);
         }
     }
 }
