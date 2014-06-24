@@ -57,15 +57,15 @@ namespace TugasFramework
                     newForm = (T)Convert.ChangeType(a.CreateInstance(t.FullName), t);
                 }
                 Form form = newForm as Form;
-                form.KeyPreview = true;
-                form.KeyDown += lib.enterAsTab;
-                form.KeyPress += lib.disableEnterErrorSound;
                 if (showDialogMode)
                 {
                     form.ShowDialog();
                 }
                 else
                 {
+                    form.KeyPreview = true;
+                    form.KeyDown += lib.enterAsTab;
+                    form.KeyPress += lib.disableEnterErrorSound;
                     form.MdiParent = this;
                     form.Show();
                     form.Focus();

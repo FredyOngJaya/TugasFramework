@@ -20,63 +20,34 @@ namespace TugasFramework.Transaksi
         public FormPeminjaman()
         {
             InitializeComponent();
-            arrayTextbox = new TextBox[] { textBoxIDPeminjaman, textBoxIDMember, textBoxIDBuku, textBoxNamaMember, textBoxJudulBuku };
+            arrayTextbox = new TextBox[] { textBoxIDPeminjaman, textBoxIDMember, textBoxIDBuku,
+                textBoxNamaMember, textBoxJudulBuku };
             buttonBatal_Click(null, null);
+        }
+
+        #region Browse
+
+        private void buttonBrowsePeminjaman_Click(object sender, EventArgs e)
+        {
+            lib.BrowsePeminjaman(textBoxIDPeminjaman as Control);
+            textBoxIDPeminjaman_Leave(null, null);
         }
 
         private void buttonBrowseMember_Click(object sender, EventArgs e)
         {
             lib.BrowseMember(textBoxIDMember as Control);
-        }
-
-        private void textBoxIDMember_Leave(object sender, EventArgs e)
-        {
-            if (!textBoxIDMember.Text.Trim().Equals(""))
-            {
-                DataRow row = lib.GetDataAnggota(textBoxIDMember.Text);
-                if (row != null)
-                {
-                    textBoxNamaMember.Text = row["nama"].ToString();
-                }
-            }
-        }
-
-        private void buttonBrowsePeminjaman_Click(object sender, EventArgs e)
-        {
-            lib.BrowsePeminjaman(textBoxIDPeminjaman as Control);
-        }
-
-        private void textBoxIDPeminjaman_Leave(object sender, EventArgs e)
-        {
-            if (!textBoxIDPeminjaman.Text.Trim().Equals(""))
-            {
-                DataRow row = lib.GetDataPeminjaman(textBoxIDPeminjaman.Text);
-                if (row != null)
-                {
-                    //sudah ada peminjaman fill data
-                    textBoxIDMember.Text = row["id"].ToString();
-                    SetButton(false, false, true, true);
-                    textBoxIDMember_Leave(null, null);
-                }
-            }
+            textBoxIDMember_Leave(null, null);
         }
 
         private void buttonBrowseBuku_Click(object sender, EventArgs e)
         {
             lib.BrowseBuku(textBoxIDBuku);
+            textBoxIDBuku_Leave(null, null);
         }
 
-        private void textBoxIDBuku_Leave(object sender, EventArgs e)
-        {
-            if (!textBoxIDBuku.Text.Trim().Equals(""))
-            {
-                DataRow row = lib.GetDataBuku(textBoxIDBuku.Text);
-                if (row != null)
-                {
-                    textBoxJudulBuku.Text = row["judul"].ToString();
-                }
-            }
-        }
+        #endregion
+
+        #region Function & Procedure
 
         private void SetButton(bool baru, bool simpan, bool hapus, bool batal)
         {
@@ -93,6 +64,10 @@ namespace TugasFramework.Transaksi
             panelData.Enabled = panel;
         }
 
+        #endregion
+
+        #region Menu Utama
+
         private void buttonBaru_Click(object sender, EventArgs e)
         {
             lib.ClearTextBox(arrayTextbox);
@@ -105,7 +80,8 @@ namespace TugasFramework.Transaksi
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("insert into peminjaman values(@id_anggota,@id_buku,GETDATE(),0,null)", lib._SqlConnection);
+                SqlCommand cmd = new SqlCommand("insert into peminjaman "+
+                    "values(@id_anggota,@id_buku,GETDATE(),0,null)", lib._SqlConnection);
                 cmd.Parameters.AddWithValue("@id_anggota", textBoxIDMember.Text);
                 cmd.Parameters.AddWithValue("@id_buku", textBoxIDBuku.Text);
                 cmd.ExecuteNonQuery();
@@ -143,5 +119,50 @@ namespace TugasFramework.Transaksi
             SetForm(true, false);
             SetButton(true, false, false, false);
         }
+
+        #endregion
+
+        #region Event
+
+        private void textBoxIDPeminjaman_Leave(object sender, EventArgs e)
+        {
+            if (!textBoxIDPeminjaman.Text.Trim().Equals(""))
+            {
+                DataRow row = lib.GetDataPeminjaman(textBoxIDPeminjaman.Text);
+                if (row != null)
+                {
+                    //sudah ada peminjaman fill data
+                    textBoxIDMember.Text = row["id"].ToString();
+                    SetButton(false, false, true, true);
+                    textBoxIDMember_Leave(null, null);
+                }
+            }
+        }
+
+        private void textBoxIDMember_Leave(object sender, EventArgs e)
+        {
+            if (!textBoxIDMember.Text.Trim().Equals(""))
+            {
+                DataRow row = lib.GetDataAnggota(textBoxIDMember.Text);
+                if (row != null)
+                {
+                    textBoxNamaMember.Text = row["nama"].ToString();
+                }
+            }
+        }
+
+        private void textBoxIDBuku_Leave(object sender, EventArgs e)
+        {
+            if (!textBoxIDBuku.Text.Trim().Equals(""))
+            {
+                DataRow row = lib.GetDataBuku(textBoxIDBuku.Text);
+                if (row != null)
+                {
+                    textBoxJudulBuku.Text = row["judul"].ToString();
+                }
+            }
+        }
+
+        #endregion
     }
 }

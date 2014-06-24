@@ -307,40 +307,43 @@ namespace TugasFramework.Library
 
         public static void BrowseMember(Control controlID)
         {
-            FormBrowse browse = new FormBrowse("Cari Member", "select id as [Member ID], Nama from Anggota",
-                                            "Nama Member", "Nama", (sd, ev) =>
-                                            {
-                                                DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
-                                                controlID.Text = row.Cells["Member ID"].Value.ToString();
-                                            });
+            FormBrowse browse = new FormBrowse("Cari Member",
+                "select id as [Member ID], Nama from Anggota",
+                "Nama Member", "Nama", (sd, ev) =>
+                {
+                    DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
+                    controlID.Text = row.Cells["Member ID"].Value.ToString();
+                });
             browse.ShowDialog();
             browse.Dispose();
         }
 
         public static void BrowseBuku(Control controlID)
         {
-            FormBrowse browse = new FormBrowse("Cari Buku", "select * from Buku",
-                                            "Judul Buku", "Judul", (sd, ev) =>
-                                            {
-                                                DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
-                                                controlID.Text = row.Cells["id"].Value.ToString();
-                                            });
+            FormBrowse browse = new FormBrowse("Cari Buku",
+                "select * from Buku",
+                "Judul Buku", "Judul", (sd, ev) =>
+                {
+                    DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
+                    controlID.Text = row.Cells["id"].Value.ToString();
+                });
             browse.ShowDialog();
             browse.Dispose();
         }
 
         public static void BrowsePeminjaman(Control controlID)
         {
-            FormBrowse browse = new FormBrowse("Cari Peminjaman", "select a.id, b.nama as [Nama Peminjam], c.judul as [Judul Buku], "+
-                                                                "a.tanggal_pinjam as [Tanggal Peminjaman], a.sudah_kembali as [Status Kembali] "+
-                                                                "from peminjaman_buku a "+
-                                                                "inner join anggota b on a.id_anggota=b.id " +
-                                                                "inner join buku c on a.id_buku=c.id",
-                                            "Nama Peminjam", "Nama", (sd, ev) =>
-                                            {
-                                                DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
-                                                controlID.Text = row.Cells["id"].Value.ToString();
-                                            });
+            FormBrowse browse = new FormBrowse("Cari Peminjaman",
+                "select a.id, b.nama as [Nama Peminjam], c.judul as [Judul Buku], "+
+                "a.tanggal_pinjam as [Tanggal Peminjaman], a.sudah_kembali as [Status Kembali] "+
+                "from peminjaman_buku a "+
+                "inner join anggota b on a.id_anggota=b.id " +
+                "inner join buku c on a.id_buku=c.id",
+                "Nama Peminjam", "Nama", (sd, ev) =>
+                {
+                    DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
+                    controlID.Text = row.Cells["id"].Value.ToString();
+                });
             browse.ShowDialog();
             browse.Dispose();
         }
