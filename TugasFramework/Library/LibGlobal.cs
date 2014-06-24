@@ -14,8 +14,8 @@ namespace TugasFramework.Library
         /// <summary>
         /// ConnectionString ke database
         /// </summary>
-        private static string _SqlConnectionString = "Data Source = (local); Initial Catalog = Library; Integrated Security = True";
-        //private static string _SqlConnectionString = @"Data Source = ONG\SQLEXPRESS; Initial Catalog = Library; Integrated Security = True";
+        //private static string _SqlConnectionString = "Data Source = (local); Initial Catalog = Library; Integrated Security = True";
+        private static string _SqlConnectionString = @"Data Source = ONG\SQLEXPRESS; Initial Catalog = Library; Integrated Security = True";
         /// <summary>
         /// Koneksi SQL ke database
         /// </summary>
@@ -331,7 +331,7 @@ namespace TugasFramework.Library
                 "from peminjaman_buku a "+
                 "inner join anggota b on a.id_anggota=b.id " +
                 "inner join buku c on a.id_buku=c.id",
-                "Nama Peminjam", "Nama", (sd, ev) =>
+                "Nama Peminjam", "Nama Peminjam", (sd, ev) =>
                 {
                     DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
                     controlID.Text = row.Cells["id"].Value.ToString();

@@ -37,12 +37,12 @@
             this.buttonBatal = new System.Windows.Forms.Button();
             this.buttonSimpan = new System.Windows.Forms.Button();
             this.groupBoxDataPeminjaman = new System.Windows.Forms.GroupBox();
-            this.buttonBrowsePeminjaman = new System.Windows.Forms.Button();
-            this.buttonHapusGrid = new System.Windows.Forms.Button();
             this.dataGridViewDataPeminjaman = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Judul = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tanggal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonHapusGrid = new System.Windows.Forms.Button();
+            this.buttonBrowsePeminjaman = new System.Windows.Forms.Button();
             this.groupBoxDataPeminjaman.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDataPeminjaman)).BeginInit();
             this.SuspendLayout();
@@ -133,26 +133,6 @@
             this.groupBoxDataPeminjaman.TabStop = false;
             this.groupBoxDataPeminjaman.Text = "Data peminjaman";
             // 
-            // buttonBrowsePeminjaman
-            // 
-            this.buttonBrowsePeminjaman.Location = new System.Drawing.Point(6, 24);
-            this.buttonBrowsePeminjaman.Name = "buttonBrowsePeminjaman";
-            this.buttonBrowsePeminjaman.Size = new System.Drawing.Size(75, 30);
-            this.buttonBrowsePeminjaman.TabIndex = 22;
-            this.buttonBrowsePeminjaman.Text = "Tambah";
-            this.buttonBrowsePeminjaman.UseVisualStyleBackColor = true;
-            this.buttonBrowsePeminjaman.Click += new System.EventHandler(this.buttonBrowsePeminjaman_Click);
-            // 
-            // buttonHapusGrid
-            // 
-            this.buttonHapusGrid.Location = new System.Drawing.Point(87, 24);
-            this.buttonHapusGrid.Name = "buttonHapusGrid";
-            this.buttonHapusGrid.Size = new System.Drawing.Size(75, 30);
-            this.buttonHapusGrid.TabIndex = 23;
-            this.buttonHapusGrid.Text = "Hapus";
-            this.buttonHapusGrid.UseVisualStyleBackColor = true;
-            this.buttonHapusGrid.Click += new System.EventHandler(this.buttonHapusGrid_Click);
-            // 
             // dataGridViewDataPeminjaman
             // 
             this.dataGridViewDataPeminjaman.AllowUserToAddRows = false;
@@ -189,7 +169,7 @@
             this.Judul.HeaderText = "Judul Buku";
             this.Judul.Name = "Judul";
             this.Judul.ReadOnly = true;
-            this.Judul.Width = 94;
+            this.Judul.Width = 87;
             // 
             // Tanggal
             // 
@@ -197,6 +177,26 @@
             this.Tanggal.Name = "Tanggal";
             this.Tanggal.ReadOnly = true;
             this.Tanggal.Width = 141;
+            // 
+            // buttonHapusGrid
+            // 
+            this.buttonHapusGrid.Location = new System.Drawing.Point(87, 24);
+            this.buttonHapusGrid.Name = "buttonHapusGrid";
+            this.buttonHapusGrid.Size = new System.Drawing.Size(75, 30);
+            this.buttonHapusGrid.TabIndex = 23;
+            this.buttonHapusGrid.Text = "Hapus";
+            this.buttonHapusGrid.UseVisualStyleBackColor = true;
+            this.buttonHapusGrid.Click += new System.EventHandler(this.buttonHapusGrid_Click);
+            // 
+            // buttonBrowsePeminjaman
+            // 
+            this.buttonBrowsePeminjaman.Location = new System.Drawing.Point(6, 24);
+            this.buttonBrowsePeminjaman.Name = "buttonBrowsePeminjaman";
+            this.buttonBrowsePeminjaman.Size = new System.Drawing.Size(75, 30);
+            this.buttonBrowsePeminjaman.TabIndex = 22;
+            this.buttonBrowsePeminjaman.Text = "Tambah";
+            this.buttonBrowsePeminjaman.UseVisualStyleBackColor = true;
+            this.buttonBrowsePeminjaman.Click += new System.EventHandler(this.buttonBrowsePeminjaman_Click);
             // 
             // FormPengembalian
             // 

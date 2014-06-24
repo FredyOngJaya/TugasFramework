@@ -623,9 +623,9 @@ namespace TugasFramework.Game
                     for (int j = 0; j < this.size - 1; j++)
                     {
                         //grid.cells[x, y]
-                        writer.Write(grid.cells[i, j].value + ";");
+                        writer.Write(grid.cells[j, i].value + ";");
                     }
-                    writer.WriteLine(grid.cells[i, this.size - 1].value);
+                    writer.WriteLine(grid.cells[this.size - 1, i].value);
                 }
             }
         }

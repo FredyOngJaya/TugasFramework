@@ -55,9 +55,10 @@ create table Anggota
 	id int identity(1,1),
 	nomor_identitas varchar(64) not null,
 	nama varchar(255) not null,
+	jenis_kelamin varchar(10) not null,
 	alamat varchar(255) not null,
 	hp varchar(16) not null,
-	status_aktif bit not null default 1,
+	--status_aktif bit not null default 1,
 	constraint PK_Anggota primary key (id),
 	constraint UQ_Anggota unique (nomor_identitas)
 )
@@ -84,7 +85,7 @@ insert into Pengguna
 select 'admin', master.dbo.fn_varbintohexsubstring(0, HashBytes('SHA1', 'spasi'), 1, 0), 'private'
 union select 'member', master.dbo.fn_varbintohexsubstring(0, HashBytes('SHA1', 'member'), 1, 0), 'public'
 go
-
+/*
 insert into Anggota
 select * from (
 select '1' a,'stanley' b,'alamat tak jelas' c,'080000000000' d,1 e
@@ -95,7 +96,7 @@ union select '5','tom','alamat tak jelas','080000000000',1
 union select '6','her','alamat tak jelas','080000000000',1
 ) a
 go
-
+*/
 insert into Buku
 select * from (
 select 'buku1' a
