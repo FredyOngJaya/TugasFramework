@@ -58,13 +58,13 @@ namespace TugasFramework
                     newForm = (T)Convert.ChangeType(a.CreateInstance(t.FullName), t);
                 }
                 Form form = newForm as Form;
+                form.KeyPreview = true;
                 if (showDialogMode)
                 {
                     form.ShowDialog();
                 }
                 else
                 {
-                    form.KeyPreview = true;
                     form.KeyDown += lib.enterAsTab;
                     form.KeyPress += lib.disableEnterErrorSound;
                     form.MdiParent = this;
@@ -120,6 +120,15 @@ namespace TugasFramework
 
         #endregion
 
+        #region Laporan
+
+        private void laporanPeminjamanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(ref laporanPeminjaman);
+        }
+
+        #endregion
+
         #region Game
 
         private void game2048ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -132,11 +141,6 @@ namespace TugasFramework
         private void testingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(ref formTest);
-        }
-
-        private void laporanPeminjamanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowForm(ref laporanPeminjaman);
         }
     }
 }

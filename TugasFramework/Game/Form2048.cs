@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using System.IO;
+using System.Data.SqlClient;
+
 namespace TugasFramework.Game
 {
     /// <summary>
@@ -22,9 +25,9 @@ namespace TugasFramework.Game
         private bool won;
         private bool keepPlaying;
         private Grid grid;
-        private Button[,] place;
+        private Label[,] place;
         private Random random;
-        private Dictionary<int, Color> tileBackgroundColor = new Dictionary<int,Color>();
+        private Dictionary<int, Color> tileBackgroundColor = new Dictionary<int, Color>();
 
         enum Direct
         {
@@ -198,6 +201,7 @@ namespace TugasFramework.Game
         {
             InitializeComponent();
 
+            this.panelGrid.BackColor = Color.FromArgb(0xbb, 0xad, 0xa0);
             this.panelGameOver.BackColor = Color.FromArgb(238, 228, 218);
             this.panelWin.BackColor = Color.FromArgb(237, 194, 46);
 
@@ -205,12 +209,12 @@ namespace TugasFramework.Game
             this.startTiles = 2;
             random = new Random(DateTime.Now.Millisecond);
 
-            this.place = new Button[this.size, this.size];
+            this.place = new Label[this.size, this.size];
             for (int y = 0; y < this.size; y++)
             {
                 for (int x = 0; x < this.size; x++)
                 {
-                    place[x, y] = this.panelGrid.Controls["button" + x + y] as Button;
+                    place[x, y] = this.panelGrid.Controls["label" + x + y] as Label;
                 }
             }
 
@@ -248,6 +252,8 @@ namespace TugasFramework.Game
             tileBackgroundColor[1 << 15] = Color.FromArgb(0x3c, 0x3a, 0x32);
             // 65536    3c3a32
             tileBackgroundColor[1 << 16] = Color.FromArgb(0x3c, 0x3a, 0x32);
+            // dst    3c3a32
+            tileBackgroundColor[1 << 17] = Color.FromArgb(0x3c, 0x3a, 0x32);
 
             this.panelGrid.Visible = true;
             this.panelWin.Visible = false;
@@ -296,6 +302,7 @@ namespace TugasFramework.Game
                     {
                         place[x, y].Text = "";
                     }
+                    place[x, y].ForeColor = t.value > 4 ? Color.FromArgb(0xee, 0xe4, 0xda) : Color.Black;
                     place[x, y].BackColor = tileBackgroundColor[t.value];
                 }
             }
@@ -353,30 +360,38 @@ namespace TugasFramework.Game
         private GameData getGameState()
         {
             GameData data = new GameData();
-            //Tile[,] tile = new Tile[this.size, this.size];
-            //Random r = new Random(DateTime.Now.Millisecond);
-            //for (int i = 0; i < this.size; i++)
-            //{
-            //    for (int j = 0; j < this.size; j++)
-            //    {
-            //        int t = r.Next(0, 15);
-            //        if (t != 0)
-            //        {
-            //            tile[i, j] = new Tile(new Coordinat(i, j), 1 << t);
-            //        }
-            //        else
-            //        {
-            //            tile[i, j] = new Tile(new Coordinat(i, j), 0);
-            //        }
-            //    }
-            //}
-            //data.grid = tile;
-            data.grid = null;
-            data.size = 4;
-            data.score = 1000;
-            data.over = false;
-            data.won = false;
-            data.keepPlaying = true;
+            if (File.Exists("2048.txt"))
+            {
+                using (StreamReader reader = new StreamReader("2048.txt"))
+                {
+                    string line;
+                    line = reader.ReadLine();
+                    data.size = Convert.ToInt32(line.Substring(5));
+                    line = reader.ReadLine();
+                    data.score = Convert.ToInt32(line.Substring(6));
+                    line = reader.ReadLine();
+                    data.keepPlaying = Convert.ToBoolean(line.Substring(12));
+                    line = reader.ReadLine();
+                    data.over = Convert.ToBoolean(line.Substring(5));
+                    line = reader.ReadLine();
+                    data.won = Convert.ToBoolean(line.Substring(4));
+                    Tile[,] tile = new Tile[data.size, data.size];
+                    for (int i = 0; i < data.size; i++)
+                    {
+                        line = reader.ReadLine();
+                        string[] split = line.Split(';');
+                        for (int j = 0; j < data.size; j++)
+                        {
+                            tile[j, i] = new Tile(new Coordinat(j, i), Convert.ToInt32(split[j]));
+                        }
+                    }
+                    data.grid = tile;
+                }
+            }
+            else
+            {
+                data.grid = null;
+            }
             return data;
         }
 
@@ -586,8 +601,33 @@ namespace TugasFramework.Game
         private void buttonRestart_Click(object sender, EventArgs e)
         {
             // clear game state
+            if (File.Exists("2048.txt"))
+            {
+                File.Delete("2048.txt");
+            }
             this.ContinueGame();
             this.setup();
+        }
+
+        private void Form2048_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            using (StreamWriter writer = new StreamWriter("2048.txt", false))
+            {
+                writer.WriteLine("size;" +  this.size);
+                writer.WriteLine("score;" + this.score);
+                writer.WriteLine("keepPlaying;" + this.keepPlaying);
+                writer.WriteLine("over;" + this.over);
+                writer.WriteLine("won;" + this.won);
+                for (int i = 0; i < this.size; i++)
+                {
+                    for (int j = 0; j < this.size - 1; j++)
+                    {
+                        //grid.cells[x, y]
+                        writer.Write(grid.cells[i, j].value + ";");
+                    }
+                    writer.WriteLine(grid.cells[i, this.size - 1].value);
+                }
+            }
         }
     }
 }
