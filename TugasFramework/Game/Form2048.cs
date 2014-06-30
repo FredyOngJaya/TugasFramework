@@ -263,6 +263,20 @@ namespace TugasFramework.Game
             this.buttonTryAgain.Click += buttonRestart_Click;
             this.buttonTryAgainWin.Click += buttonRestart_Click;
 
+            int high = Convert.ToInt32(lib.GetObject("select value from gamedata where kode='high'"));
+            if (this.bestScore < high)
+            {
+                this.bestScore = high;
+            }
+            int highCount = Convert.ToInt32(lib.GetObject("select count(*) from gamedata where kode='high'"));
+            if (highCount == 0)
+            {
+                using (SqlCommand cmd = new SqlCommand("insert into gamedata values ('high','0')"))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
             this.setup();
         }
 

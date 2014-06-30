@@ -14,8 +14,8 @@ namespace TugasFramework.Library
         /// <summary>
         /// ConnectionString ke database
         /// </summary>
-        //private static string _SqlConnectionString = "Data Source = (local); Initial Catalog = Library; Integrated Security = True";
-        private static string _SqlConnectionString = @"Data Source = ONG\SQLEXPRESS; Initial Catalog = Library; Integrated Security = True";
+        private static string _SqlConnectionString = "Data Source = (local); Initial Catalog = Library; Integrated Security = True";
+        //private static string _SqlConnectionString = @"Data Source = ONG\SQLEXPRESS; Initial Catalog = Library; Integrated Security = True";
         /// <summary>
         /// Koneksi SQL ke database
         /// </summary>
