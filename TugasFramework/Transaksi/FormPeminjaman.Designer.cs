@@ -185,9 +185,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 140);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 17);
+            this.label5.Size = new System.Drawing.Size(51, 17);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Kode Buku";
+            this.label5.Text = "ID Buku";
             // 
             // label6
             // 

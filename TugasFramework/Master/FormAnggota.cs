@@ -35,6 +35,7 @@ namespace TugasFramework.Master
         {
             DataTable dt = lib.GetDataTable("Select * from Anggota");
             dataGridViewDataAnggota.DataSource = dt;
+            dataGridViewDataAnggota.Columns["id"].Visible = false;
         }
 
         private void btntambah_Click(object sender, EventArgs e)
@@ -95,10 +96,10 @@ namespace TugasFramework.Master
             DataGridViewRow dr = dataGridViewDataAnggota.Rows[e.RowIndex];
             txtno.Text = dr.Cells["nomor_identitas"].Value.ToString();
             txtnama.Text = dr.Cells["nama"].Value.ToString();
-            if (dr.Cells["nama"].Value.ToString() == "Perempuan")
+            if (dr.Cells["jenis_kelamin"].Value.ToString() == "Perempuan")
                 rd1.Checked = true;
             else
-                rd0.Checked = false;
+                rd0.Checked = true;
             txtalamat.Text = dr.Cells["alamat"].Value.ToString();
             txttelepon.Text = dr.Cells["hp"].Value.ToString();
 
@@ -106,7 +107,13 @@ namespace TugasFramework.Master
 
         private void btnubah_Click(object sender, EventArgs e)
         {
-
+            lib.BukaKoneksi();
+            SqlCommand cmd = new SqlCommand("update anggota set nama='" + txtnama.Text + "', jenis_kelamin='" + (rd0.Checked ? "Laki-Laki" : "Perempuan") + "', alamat='" + txtalamat.Text + "', hp='" + txttelepon.Text + "' where nomor_identitas = '" + txtno.Text + "'", lib._SqlConnection);
+            cmd.ExecuteNonQuery();
+            lib.PesanInformasi("Update berhasil");
+            tampilkan();
+            bersihkan();
+            lib.TutupKoneksi();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace TugasFramework.Transaksi
                 "inner join anggota b on a.id_anggota=b.id " +
                 "inner join buku c on a.id_buku=c.id " +
                 "where a.sudah_kembali=0 and a.id_anggota=" + textBoxIDMember.Text,
-                "Nama Peminjam", "Nama", (sd, ev) =>
+                "Nama Peminjam", "Nama", new string[] { "id" }, (sd, ev) =>
                 {
                     DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
                     int id_pinjam = Convert.ToInt32(row.Cells["id"].Value);
@@ -88,6 +88,7 @@ namespace TugasFramework.Transaksi
         {
             if (dataGridViewDataPeminjaman.RowCount > 0 && dataGridViewDataPeminjaman.SelectedRows != null)
             {
+                listIDPeminjaman.Remove(Convert.ToInt32(dataGridViewDataPeminjaman.SelectedRows[0].Cells["id"].Value));
                 dataGridViewDataPeminjaman.Rows.Remove(dataGridViewDataPeminjaman.SelectedRows[0]);
             }
         }

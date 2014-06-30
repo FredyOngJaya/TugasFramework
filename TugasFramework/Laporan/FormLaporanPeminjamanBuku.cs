@@ -29,10 +29,13 @@ namespace TugasFramework.Laporan
                 "else 'Belum dikembalikan' end) as status_pinjam, " +
                 "a.tanggal_kembali from Peminjaman_Buku a " +
                 "inner join Anggota b on a.id_anggota=b.id " +
-                "inner join Buku c on a.id_buku=c.id";
+                "inner join Buku c on a.id_buku=c.id " +
+                "where a.tanggal_pinjam >= @tanggal_awal and a.tanggal_pinjam < @tanggal_akhir";
             SqlCommand cmd = new SqlCommand(sql, lib._SqlConnection);
-
+            cmd.Parameters.AddWithValue("@tanggal_awal", dateTimePickerTanggalAwal.Value.Date);
+            cmd.Parameters.AddWithValue("@tanggal_akhir", dateTimePickerTanggalAkhir.Value.Date.AddDays(1));
             SqlDataAdapter da = new SqlDataAdapter(cmd);
+            ds.Peminjaman.Rows.Clear();
             da.Fill(ds.Peminjaman);
             FormPreviewCrystalReport preview = new FormPreviewCrystalReport("Laporan Peminjaman",
                 new CrystalReportLaporanPeminjaman(), ds.Peminjaman);

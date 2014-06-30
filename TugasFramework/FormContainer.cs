@@ -22,7 +22,6 @@ namespace TugasFramework
         private Transaksi.FormPengembalian pengembalian;
         private Laporan.FormLaporanPeminjamanBuku laporanPeminjaman;
         private Game.Form2048 Game2048;
-        private Form1 formTest;
 
         public bool isTerminated { get; private set; }
 
@@ -138,9 +137,5 @@ namespace TugasFramework
 
         #endregion
 
-        private void testingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowForm(ref formTest);
-        }
     }
 }

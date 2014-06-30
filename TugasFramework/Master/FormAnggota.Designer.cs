@@ -166,7 +166,7 @@
             // 
             this.btntambah.Location = new System.Drawing.Point(33, 208);
             this.btntambah.Name = "btntambah";
-            this.btntambah.Size = new System.Drawing.Size(75, 23);
+            this.btntambah.Size = new System.Drawing.Size(75, 26);
             this.btntambah.TabIndex = 26;
             this.btntambah.Text = "Tambah";
             this.btntambah.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
             // 
             this.btnubah.Location = new System.Drawing.Point(141, 208);
             this.btnubah.Name = "btnubah";
-            this.btnubah.Size = new System.Drawing.Size(75, 23);
+            this.btnubah.Size = new System.Drawing.Size(75, 26);
             this.btnubah.TabIndex = 26;
             this.btnubah.Text = "Ubah";
             this.btnubah.UseVisualStyleBackColor = true;
@@ -186,7 +186,7 @@
             // 
             this.btnhapus.Location = new System.Drawing.Point(247, 208);
             this.btnhapus.Name = "btnhapus";
-            this.btnhapus.Size = new System.Drawing.Size(75, 23);
+            this.btnhapus.Size = new System.Drawing.Size(75, 26);
             this.btnhapus.TabIndex = 26;
             this.btnhapus.Text = "Hapus";
             this.btnhapus.UseVisualStyleBackColor = true;
@@ -198,10 +198,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(784, 474);
+            this.Controls.Add(this.dataGridViewDataAnggota);
             this.Controls.Add(this.btnhapus);
             this.Controls.Add(this.btnubah);
             this.Controls.Add(this.btntambah);
-            this.Controls.Add(this.dataGridViewDataAnggota);
             this.Controls.Add(this.rd1);
             this.Controls.Add(this.rd0);
             this.Controls.Add(this.txtalamat);

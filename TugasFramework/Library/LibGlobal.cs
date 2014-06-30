@@ -314,7 +314,7 @@ namespace TugasFramework.Library
         {
             FormBrowse browse = new FormBrowse("Cari Buku",
                 "select * from Buku",
-                "Judul Buku", "Judul", (sd, ev) =>
+                "Judul Buku", "Judul", new string[] { "id" }, (sd, ev) =>
                 {
                     DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
                     controlID.Text = row.Cells["id"].Value.ToString();
@@ -331,7 +331,7 @@ namespace TugasFramework.Library
                 "from peminjaman_buku a "+
                 "inner join anggota b on a.id_anggota=b.id " +
                 "inner join buku c on a.id_buku=c.id",
-                "Nama Peminjam", "Nama Peminjam", (sd, ev) =>
+                "Nama Peminjam", "Nama Peminjam", new string[] { "id" }, (sd, ev) =>
                 {
                     DataGridViewRow row = (sd as DataGridView).Rows[ev.RowIndex];
                     controlID.Text = row.Cells["id"].Value.ToString();

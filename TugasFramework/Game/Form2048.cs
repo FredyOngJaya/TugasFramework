@@ -9,6 +9,8 @@ using System.Windows.Forms;
 
 using System.IO;
 using System.Data.SqlClient;
+using TugasFramework.Library;
+using lib = TugasFramework.Library.LibGlobal;
 
 namespace TugasFramework.Game
 {
@@ -315,6 +317,7 @@ namespace TugasFramework.Game
 
             if (this.isGameTerminated())
             {
+                updateHighScore();
                 if (this.over)
                 {
                     this.panelGrid.Visible = false;
@@ -628,6 +631,19 @@ namespace TugasFramework.Game
                     writer.WriteLine(grid.cells[this.size - 1, i].value);
                 }
             }
+            updateHighScore();
+        }
+
+        private void updateHighScore()
+        {
+            lib.BukaKoneksi();
+            int high = Convert.ToInt32(lib.GetObject("select value from gamedata where kode='high'"));
+            if (high < bestScore)
+            {
+                SqlCommand cmd = new SqlCommand("update gamedata set value='" + bestScore + "' where kode='high'", lib._SqlConnection);
+                cmd.ExecuteNonQuery();
+            }
+            lib.TutupKoneksi();
         }
     }
 }
